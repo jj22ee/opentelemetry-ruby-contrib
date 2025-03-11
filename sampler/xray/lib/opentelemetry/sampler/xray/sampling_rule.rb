@@ -2,6 +2,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+module OpenTelemetry
+  module Sampler
+    module XRay
+
 class SamplingRule
   attr_accessor :rule_name, :rule_arn, :priority, :reservoir_size, :fixed_rate,
                 :service_name, :service_type, :host, :http_method, :url_path,
@@ -11,22 +15,25 @@ class SamplingRule
     # The AWS API docs mark `rule_name` as an optional field but in practice it seems to always be
     # present, and sampling targets could not be computed without it. For now provide an arbitrary fallback just in
     # case the AWS API docs are correct.
-    @rule_name = sampling_rule.rule_name || 'Default'
-    @rule_arn = sampling_rule.rule_arn
-    @priority = sampling_rule.priority
-    @reservoir_size = sampling_rule.reservoir_size
-    @fixed_rate = sampling_rule.fixed_rate
-    @service_name = sampling_rule.service_name
-    @service_type = sampling_rule.service_type
-    @host = sampling_rule.host
-    @http_method = sampling_rule.http_method
-    @url_path = sampling_rule.url_path
-    @resource_arn = sampling_rule.resource_arn
-    @version = sampling_rule.version
-    @attributes = sampling_rule.attributes
+    @rule_name = sampling_rule["RuleName"] || 'Default'
+    @rule_arn = sampling_rule["RuleARN"]
+    @priority = sampling_rule["Priority"]
+    @reservoir_size = sampling_rule["ReservoirSize"]
+    @fixed_rate = sampling_rule["FixedRate"]
+    @service_name = sampling_rule["ServiceName"]
+    @service_type = sampling_rule["ServiceType"]
+    @host = sampling_rule["Host"]
+    @http_method = sampling_rule["HTTPMethod"]
+    @url_path = sampling_rule["URLPath"]
+    @resource_arn = sampling_rule["ResourceARN"]
+    @version = sampling_rule["Version"]
+    @attributes = sampling_rule["Attributes"]
+
+    puts self.rule_name
+    puts self.reservoir_size + 2
   end
 
-  def equals(other)
+  def equals?(other)
     attributes_equals = if @attributes.nil? || other.attributes.nil?
                          @attributes == other.attributes
                        else
@@ -61,8 +68,9 @@ class SamplingRule
   end
 end
 
-
-
+    end
+  end
+end
 
 =begin
 

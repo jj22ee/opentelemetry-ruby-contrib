@@ -5,10 +5,15 @@
 require_relative './rate_limiter'
 
 # Constants to match OpenTelemetry enums
-module SamplingDecision
-  RECORD_AND_SAMPLED = 'RECORD_AND_SAMPLED'
-  NOT_RECORD = 'NOT_RECORD'
-end
+# module SamplingDecision
+#   RECORD_AND_SAMPLED = 'RECORD_AND_SAMPLED'
+#   NOT_RECORD = 'NOT_RECORD'
+# end
+
+module OpenTelemetry
+  module Sampler
+    module XRay
+
 
 class RateLimitingSampler
   def initialize(quota)
@@ -16,17 +21,20 @@ class RateLimitingSampler
     @reservoir = RateLimiter.new(quota)
   end
 
-  def should_sample(context, trace_id, span_name, span_kind, attributes, links)
+  def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
+    tracestate = OpenTelemetry::Trace.current_span(parent_context).context.tracestate
     if @reservoir.take(1)
-      {
-        decision: SamplingDecision::RECORD_AND_SAMPLED,
+      OpenTelemetry::SDK::Trace::Samplers::Result.new(
+        decision:  OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+        tracestate: tracestate,
         attributes: attributes
-      }
+      )
     else
-      {
-        decision: SamplingDecision::NOT_RECORD,
+      OpenTelemetry::SDK::Trace::Samplers::Result.new(
+        decision:  OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+        tracestate: tracestate,
         attributes: attributes
-      }
+      )
     end
   end
 
@@ -35,6 +43,9 @@ class RateLimitingSampler
   end
 end
 
+    end
+  end
+end
 
 =begin
 

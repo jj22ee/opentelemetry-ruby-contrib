@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+
+module OpenTelemetry
+  module Sampler
+    module XRay
+
 # Note: These constants would typically come from a Ruby gem equivalent to @opentelemetry/semantic-conventions
 CLOUD_PLATFORM_VALUES = {
   'aws_lambda' => 'AWS::Lambda::Function',
@@ -52,6 +57,10 @@ def attribute_match(attributes = nil, rule_attributes = nil)
   end
 
   matched_count == rule_attributes.length
+end
+
+    end
+  end
 end
 
 =begin

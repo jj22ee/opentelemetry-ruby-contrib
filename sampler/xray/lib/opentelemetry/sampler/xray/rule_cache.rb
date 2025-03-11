@@ -2,7 +2,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-require 'opentelemetry/api'
 
 # The cache expires 1 hour after the last refresh time.
 RULE_CACHE_TTL_MILLIS = 60 * 60 * 1000
@@ -10,11 +9,17 @@ RULE_CACHE_TTL_MILLIS = 60 * 60 * 1000
 # 10 second default sampling targets polling interval
 DEFAULT_TARGET_POLLING_INTERVAL_SECONDS = 10
 
+module OpenTelemetry
+  module Sampler
+    module XRay
+
+
 class RuleCache
   def initialize(sampler_resource)
     @rule_appliers = []
     @sampler_resource = sampler_resource
     @last_updated_epoch_millis = Time.now.to_i * 1000
+    @cache_lock = Mutex.new
   end
 
   def expired?
@@ -31,39 +36,42 @@ class RuleCache
   def update_rules(new_rule_appliers)
     old_rule_appliers_map = {}
 
-    @rule_appliers.each do |rule|
-      old_rule_appliers_map[rule.sampling_rule.rule_name] = rule
-    end
+    @cache_lock.synchronize {
+      @rule_appliers.each do |rule|
+        old_rule_appliers_map[rule.sampling_rule.rule_name] = rule
+      end
 
-    new_rule_appliers.each_with_index do |new_rule, index|
-      rule_name_to_check = new_rule.sampling_rule.rule_name
-      if old_rule_appliers_map.key?(rule_name_to_check)
-        old_rule = old_rule_appliers_map[rule_name_to_check]
-        if new_rule.sampling_rule.equals?(old_rule.sampling_rule)
-          new_rule_appliers[index] = old_rule
+      new_rule_appliers.each_with_index do |new_rule, index|
+        rule_name_to_check = new_rule.sampling_rule.rule_name
+        if old_rule_appliers_map.key?(rule_name_to_check)
+          old_rule = old_rule_appliers_map[rule_name_to_check]
+          if new_rule.sampling_rule.equals?(old_rule.sampling_rule)
+            new_rule_appliers[index] = old_rule
+          end
         end
       end
-    end
 
-    @rule_appliers = new_rule_appliers
-    sort_rules_by_priority
-    @last_updated_epoch_millis = Time.now.to_i * 1000
+      @rule_appliers = new_rule_appliers
+      sort_rules_by_priority
+      @last_updated_epoch_millis = Time.now.to_i * 1000
+    }
   end
 
   def create_sampling_statistics_documents(client_id)
     statistics_documents = []
 
+    # maybe? @cache_lock.synchronize {
     @rule_appliers.each do |rule|
       statistics = rule.snapshot_statistics
       now_in_seconds = Time.now.to_i
 
       sampling_statistics_doc = {
-        client_id: client_id,
-        rule_name: rule.sampling_rule.rule_name,
-        timestamp: now_in_seconds,
-        request_count: statistics.request_count,
-        borrow_count: statistics.borrow_count,
-        sampled_count: statistics.sample_count
+        ClientID: client_id,
+        RuleName: rule.sampling_rule.rule_name,
+        Timestamp: now_in_seconds,
+        RequestCount: statistics.request_count,
+        BorrowCount: statistics.borrow_count,
+        SampledCount: statistics.sample_count
       }
 
       statistics_documents << sampling_statistics_doc
@@ -76,24 +84,26 @@ class RuleCache
     min_polling_interval = nil
     next_polling_interval = DEFAULT_TARGET_POLLING_INTERVAL_SECONDS
 
-    @rule_appliers.each_with_index do |rule, index|
-      target = target_documents[rule.sampling_rule.rule_name]
-      if target
-        @rule_appliers[index] = rule.with_target(target)
-        if target.interval
-          if min_polling_interval.nil? || min_polling_interval > target.interval
-            min_polling_interval = target.interval
+    @cache_lock.synchronize {
+      @rule_appliers.each_with_index do |rule, index|
+        target = target_documents[rule.sampling_rule.rule_name]
+        if target
+          @rule_appliers[index] = rule.with_target(target)
+          if target.interval
+            if min_polling_interval.nil? || min_polling_interval > target.interval
+              min_polling_interval = target.interval
+            end
           end
+        else
+          OpenTelemetry.logger.debug('Invalid sampling target: missing rule name')
         end
-      else
-        OpenTelemetry::SDK.logger.debug('Invalid sampling target: missing rule name')
       end
-    end
 
-    next_polling_interval = min_polling_interval if min_polling_interval
+      next_polling_interval = min_polling_interval if min_polling_interval
 
-    refresh_sampling_rules = last_rule_modification * 1000 > @last_updated_epoch_millis
-    [refresh_sampling_rules, next_polling_interval]
+      refresh_sampling_rules = last_rule_modification * 1000 > @last_updated_epoch_millis
+      return [refresh_sampling_rules, next_polling_interval]
+    }
   end
 
   private
@@ -109,6 +119,9 @@ class RuleCache
   end
 end
 
+    end
+  end
+end
 
 =begin
 

@@ -3,6 +3,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+module OpenTelemetry
+  module Sampler
+    module XRay
+
 class Statistics
   attr_accessor :request_count, :sample_count, :borrow_count
 
@@ -24,6 +28,10 @@ class Statistics
     @request_count = 0
     @sample_count = 0
     @borrow_count = 0
+  end
+end
+
+    end
   end
 end
 

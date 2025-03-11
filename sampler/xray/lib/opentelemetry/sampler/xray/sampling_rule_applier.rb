@@ -4,25 +4,37 @@
 
 require 'opentelemetry/sdk'
 require 'date'
+require_relative 'sampling_rule'
+require_relative 'statistics'
+require_relative 'rate_limiting_sampler'
 
 # Constants would typically be defined in a separate configuration or constants file
 MAX_DATE_TIME_SECONDS = Time.at(8_640_000_000_000)
 
+module OpenTelemetry
+  module Sampler
+    module XRay
+
+
+# OpenTelemetry::SemanticConventions::Trace::HTTP_TARGET
+
 class SamplingRuleApplier
   attr_reader :sampling_rule
 
-  def initialize(sampling_rule, statistics = Statistics.new, target = nil)
-    @sampling_rule = SamplingRule.new(sampling_rule)
+  def initialize(sampling_rule, statistics = OpenTelemetry::Sampler::XRay::Statistics.new, target = nil)
+    @sampling_rule = OpenTelemetry::Sampler::XRay::SamplingRule.new(sampling_rule)
     @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(@sampling_rule.fixed_rate)
 
-    @reservoir_sampler = if sampling_rule.reservoir_size > 0
-                          RateLimitingSampler.new(1)
+    @reservoir_sampler = if @sampling_rule.reservoir_size > 0
+                          OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(1)
                         else
-                          RateLimitingSampler.new(0)
+                          OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(0)
                         end
 
     @reservoir_expiry_time = MAX_DATE_TIME_SECONDS
     @statistics = statistics
+    @statistics_lock = Mutex.new
+
     @statistics.reset_statistics
     @borrowing_enabled = true
 
@@ -86,17 +98,21 @@ class SamplingRuleApplier
       result = @fixed_rate_sampler.should_sample(context, trace_id)
     end
 
-    @statistics.sample_count += result[:decision] != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 1 : 0
-    @statistics.borrow_count += has_borrowed ? 1 : 0
-    @statistics.request_count += 1
+    @statistics_lock.synchronize {
+      @statistics.sample_count += result[:decision] != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 1 : 0
+      @statistics.borrow_count += has_borrowed ? 1 : 0
+      @statistics.request_count += 1
+    }
 
     result
   end
 
   def snapshot_statistics
-    statistics_copy = @statistics.to_h
-    @statistics.reset_statistics
-    statistics_copy
+    @statistics_lock.synchronize {
+      statistics_copy = @statistics.dup
+      @statistics.reset_statistics
+      return statistics_copy
+    }
   end
 
   private
@@ -105,7 +121,7 @@ class SamplingRuleApplier
     @borrowing_enabled = false
 
     if target.reservoir_quota
-      @reservoir_sampler = RateLimitingSampler.new(target.reservoir_quota)
+      @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target.reservoir_quota)
     end
 
     @reservoir_expiry_time = if target.reservoir_quota_ttl
@@ -136,6 +152,9 @@ class SamplingRuleApplier
 end
 
 
+    end
+  end
+end
 
 
 

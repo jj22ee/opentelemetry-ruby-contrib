@@ -4,26 +4,25 @@
 
 require_relative './rate_limiting_sampler'
 
+module OpenTelemetry
+  module Sampler
+    module XRay
+
 # FallbackSampler samples 1 req/sec and additional 5% of requests using TraceIdRatioBasedSampler.
 class FallbackSampler
   def initialize
-    @fixed_rate_sampler = TraceIdRatioBasedSampler.new(0.05)
+    @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(0.05)
     @rate_limiting_sampler = RateLimitingSampler.new(1)
   end
 
-  def should_sample(context:, trace_id:, span_name:, span_kind:, attributes:, links:)
-    sampling_result = @rate_limiting_sampler.should_sample(
-      context: context,
-      trace_id: trace_id,
-      span_name: span_name,
-      span_kind: span_kind,
-      attributes: attributes,
-      links: links
+  def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
+    sampling_result = @rate_limiting_sampler.should_sample?(
+      trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
     )
 
-    return sampling_result if sampling_result.decision != SamplingDecision::NOT_RECORD
+    return sampling_result if sampling_result.instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
 
-    @fixed_rate_sampler.should_sample(context: context, trace_id: trace_id)
+    @fixed_rate_sampler.should_sample?(trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes)
   end
 
   def to_s
@@ -31,7 +30,9 @@ class FallbackSampler
   end
 end
 
-
+    end
+  end
+end
 
 =begin
 
