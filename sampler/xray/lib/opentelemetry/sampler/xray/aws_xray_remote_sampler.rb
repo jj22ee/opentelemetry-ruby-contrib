@@ -87,15 +87,19 @@ class InternalAwsXRayRemoteSampler
   end
 
   def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
-    # if @rule_cache.expired?
-    #   OpenTelemetry.logger.debug('Rule cache is expired, so using fallback sampling strategy')
-    #   return @fallback_sampler.should_sample(context, trace_id, span_name, span_kind, attributes, links)
-    # end
+    if @rule_cache.expired?
+      OpenTelemetry.logger.debug('Rule cache is expired, so using fallback sampling strategy')
+      return @fallback_sampler.should_sample?(
+        trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+      )
+    end
 
-    # matched_rule = @rule_cache.get_matched_rule(attributes)
-    # if matched_rule
-    #   return matched_rule.should_sample(context, trace_id, span_name, span_kind, attributes, links)
-    # end
+    matched_rule = @rule_cache.get_matched_rule(attributes)
+    if matched_rule
+      return matched_rule.should_sample?(
+        trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+      )
+    end
 
     OpenTelemetry.logger.debug(
       'Using fallback sampler as no rule match was found. This is likely due to a bug, since default rule should always match'

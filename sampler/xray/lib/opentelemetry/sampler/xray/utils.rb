@@ -6,6 +6,8 @@
 module OpenTelemetry
   module Sampler
     module XRay
+      module Utils
+        module_function
 
 # Note: These constants would typically come from a Ruby gem equivalent to @opentelemetry/semantic-conventions
 CLOUD_PLATFORM_VALUES = {
@@ -18,7 +20,7 @@ CLOUD_PLATFORM_VALUES = {
 
 def escape_regexp(regexp_pattern)
   # Escapes special characters except * and ? to maintain wildcard functionality
-  regexp_pattern.gsub(/[.+^${}()|[\]\\]/) { |match| "\\#{match}" }
+  regexp_pattern.gsub(/[.+^${}()|\[\]\\]/) { |match| "\\#{match}" }
 end
 
 def convert_pattern_to_regexp(pattern)
@@ -59,6 +61,7 @@ def attribute_match(attributes = nil, rule_attributes = nil)
   matched_count == rule_attributes.length
 end
 
+      end
     end
   end
 end

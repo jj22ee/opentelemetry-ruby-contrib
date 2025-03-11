@@ -7,6 +7,30 @@ require 'date'
 require_relative 'sampling_rule'
 require_relative 'statistics'
 require_relative 'rate_limiting_sampler'
+require_relative 'utils'
+
+# Constants to mirror the TypeScript semantic conventions
+SEMATTRS_AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn'
+SEMATTRS_HTTP_HOST = 'http.host'
+SEMATTRS_HTTP_METHOD = 'http.method'
+SEMATTRS_HTTP_TARGET = 'http.target'
+SEMATTRS_HTTP_URL = 'http.url'
+SEMRESATTRS_CLOUD_PLATFORM = 'cloud.platform'
+SEMRESATTRS_SERVICE_NAME = 'service.name'
+
+ATTR_URL_PATH = 'url.path'
+ATTR_URL_FULL = 'url.full'
+ATTR_HTTP_REQUEST_METHOD = 'http.request.method'
+ATTR_SERVER_ADDRESS = 'server.address'
+ATTR_CLIENT_ADDRESS = 'client.address'
+
+SEMRESATTRS_AWS_ECS_CONTAINER_ARN = 'aws.ecs.container.arn'
+SEMRESATTRS_AWS_ECS_CLUSTER_ARN = 'aws.ecs.cluster.arn'
+SEMRESATTRS_AWS_EKS_CLUSTER_ARN = 'aws.eks.cluster.arn'
+SEMRESATTRS_CLOUD_PLATFORM = 'cloud.platform'
+CLOUDPLATFORMVALUES_AWS_LAMBDA = 'aws.lambda'
+SEMRESATTRS_FAAS_ID = 'faas.id'
+SEMATTRS_AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked.arn'
 
 # Constants would typically be defined in a separate configuration or constants file
 MAX_DATE_TIME_SECONDS = Time.at(8_640_000_000_000)
@@ -46,17 +70,26 @@ class SamplingRuleApplier
   end
 
   def matches?(attributes, resource)
-    http_target = attributes[SEMATTRS_HTTP_TARGET] || attributes[ATTR_URL_PATH]
-    http_url = attributes[SEMATTRS_HTTP_URL] || attributes[ATTR_URL_FULL]
-    http_method = attributes[SEMATTRS_HTTP_METHOD] || attributes[ATTR_HTTP_REQUEST_METHOD]
-    http_host = attributes[SEMATTRS_HTTP_HOST] || attributes[ATTR_SERVER_ADDRESS] || attributes[ATTR_CLIENT_ADDRESS]
+    http_target = nil
+    http_url = nil
+    http_method = nil
+    http_host = nil
+
+    if !attributes.nil?
+      http_target = attributes[SEMATTRS_HTTP_TARGET] || attributes[ATTR_URL_PATH]
+      http_url = attributes[SEMATTRS_HTTP_URL] || attributes[ATTR_URL_FULL]
+      http_method = attributes[SEMATTRS_HTTP_METHOD] || attributes[ATTR_HTTP_REQUEST_METHOD]
+      http_host = attributes[SEMATTRS_HTTP_HOST] || attributes[ATTR_SERVER_ADDRESS] || attributes[ATTR_CLIENT_ADDRESS]
+    end
 
     service_type = nil
     resource_arn = nil
 
+    resource_hash = resource.attribute_enumerator.to_h
+
     if resource
-      service_name = resource.attributes[SEMRESATTRS_SERVICE_NAME] || ''
-      cloud_platform = resource.attributes[SEMRESATTRS_CLOUD_PLATFORM]
+      service_name = resource_hash[SEMRESATTRS_SERVICE_NAME] || ''
+      cloud_platform = resource_hash[SEMRESATTRS_CLOUD_PLATFORM]
       service_type = CLOUD_PLATFORM_MAPPING[cloud_platform] if cloud_platform.is_a?(String)
       resource_arn = get_arn(resource, attributes)
     end
@@ -73,33 +106,40 @@ class SamplingRuleApplier
       http_target = '/'
     end
 
-    attribute_match(attributes, @sampling_rule.attributes) &&
-      wildcard_match(@sampling_rule.host, http_host) &&
-      wildcard_match(@sampling_rule.http_method, http_method) &&
-      wildcard_match(@sampling_rule.service_name, service_name) &&
-      wildcard_match(@sampling_rule.url_path, http_target) &&
-      wildcard_match(@sampling_rule.service_type, service_type) &&
-      wildcard_match(@sampling_rule.resource_arn, resource_arn)
+    OpenTelemetry::Sampler::XRay::Utils::attribute_match(attributes, @sampling_rule.attributes) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.host, http_host) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.http_method, http_method) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.service_name, service_name) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.url_path, http_target) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.service_type, service_type) &&
+      OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.resource_arn, resource_arn)
   end
 
-  def should_sample(context, trace_id, span_name, span_kind, attributes, links)
+  def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
     has_borrowed = false
-    result = { decision: OpenTelemetry::SDK::Trace::Samplers::Decision::DROP }
+    result = OpenTelemetry::SDK::Trace::Samplers::Result.new(
+      decision: OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+      tracestate: OpenTelemetry::Trace::Tracestate::DEFAULT
+    )
 
     now = Time.now
     reservoir_expired = now >= @reservoir_expiry_time
 
     unless reservoir_expired
-      result = @reservoir_sampler.should_sample(context, trace_id, span_name, span_kind, attributes, links)
-      has_borrowed = @borrowing_enabled && result[:decision] != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      result = @reservoir_sampler.should_sample?(
+        trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+      )
+      has_borrowed = @borrowing_enabled && result.instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
     end
 
-    if result[:decision] == OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-      result = @fixed_rate_sampler.should_sample(context, trace_id)
+    if result.instance_variable_get(:@decision) == OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      result = @fixed_rate_sampler.should_sample?(
+        trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+      )
     end
 
     @statistics_lock.synchronize {
-      @statistics.sample_count += result[:decision] != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 1 : 0
+      @statistics.sample_count += result.instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 1 : 0
       @statistics.borrow_count += has_borrowed ? 1 : 0
       @statistics.request_count += 1
     }
@@ -136,18 +176,20 @@ class SamplingRuleApplier
   end
 
   def get_arn(resource, attributes)
-    arn = resource.attributes[SEMRESATTRS_AWS_ECS_CONTAINER_ARN] ||
-          resource.attributes[SEMRESATTRS_AWS_ECS_CLUSTER_ARN] ||
-          resource.attributes[SEMRESATTRS_AWS_EKS_CLUSTER_ARN]
+    resource_hash = resource.attribute_enumerator.to_h
+    arn = resource_hash[SEMRESATTRS_AWS_ECS_CONTAINER_ARN] ||
+          resource_hash[SEMRESATTRS_AWS_ECS_CLUSTER_ARN] ||
+          resource_hash[SEMRESATTRS_AWS_EKS_CLUSTER_ARN]
 
-    if arn.nil? && resource&.attributes[SEMRESATTRS_CLOUD_PLATFORM] == CLOUDPLATFORMVALUES_AWS_LAMBDA
+    if arn.nil? && resource_hash[SEMRESATTRS_CLOUD_PLATFORM] == CLOUDPLATFORMVALUES_AWS_LAMBDA
       arn = get_lambda_arn(resource, attributes)
     end
     arn
   end
 
   def get_lambda_arn(resource, attributes)
-    resource&.attributes[SEMRESATTRS_FAAS_ID] || attributes[SEMATTRS_AWS_LAMBDA_INVOKED_ARN]
+    resource_hash = resource.attribute_enumerator.to_h
+    resource_hash[SEMRESATTRS_FAAS_ID] || attributes[SEMATTRS_AWS_LAMBDA_INVOKED_ARN]
   end
 end
 
