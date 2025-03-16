@@ -10,7 +10,7 @@ module OpenTelemetry
         module_function
 
 # Note: These constants would typically come from a Ruby gem equivalent to @opentelemetry/semantic-conventions
-CLOUD_PLATFORM_VALUES = {
+CLOUD_PLATFORM_MAPPING = {
   'aws_lambda' => 'AWS::Lambda::Function',
   'aws_elastic_beanstalk' => 'AWS::ElasticBeanstalk::Environment',
   'aws_ec2' => 'AWS::EC2::Instance',
@@ -37,7 +37,7 @@ def wildcard_match(pattern = nil, text = nil)
 
   unless match
     # Assuming a logging mechanism exists
-    puts "WildcardMatch: no match found for #{text} against pattern #{pattern}"
+    # puts "WildcardMatch: no match found for #{text} against pattern #{pattern}"
   end
 
   match
@@ -78,7 +78,7 @@ Key differences and notes about the conversion:
 
     Regular expressions in Ruby use slightly different syntax but maintain the same functionality
 
-    The diag.debug call has been replaced with a simple puts for demonstration. In a real implementation, you'd want to use proper logging
+    The diag.debug call has been replaced with a simple # puts for demonstration. In a real implementation, you'd want to use proper logging
 
     Ruby's match? method is used instead of JavaScript's match for better performance since we only care about whether there is a match, not the match data
 

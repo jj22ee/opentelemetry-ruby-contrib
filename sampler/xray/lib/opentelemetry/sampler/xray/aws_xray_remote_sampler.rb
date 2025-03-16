@@ -11,6 +11,7 @@ require 'opentelemetry/sdk'
 require_relative 'fallback_sampler'
 require_relative 'sampling_rule_applier'
 require_relative 'rule_cache'
+require_relative 'aws_xray_sampling_client'
 require 'net/http'
 require 'json'
 
@@ -46,8 +47,8 @@ end
 # however it is NOT Parent-based (e.g. Sample logic runs for each span)
 class InternalAwsXRayRemoteSampler
   def initialize(endpoint: "127.0.0.1:2000", polling_interval: DEFAULT_RULES_POLLING_INTERVAL_SECONDS, resource: OpenTelemetry::SDK::Resources::Resource.create)
-    puts "HIIIIIIIIIIIIII"
-    puts "#{endpoint} , #{polling_interval}"
+    # puts "HIIIIIIIIIIIIII"
+    # puts "#{endpoint} , #{polling_interval}"
     OpenTelemetry.logger.error("TESTING123123123")
     OpenTelemetry.logger.error("TESTING123123")
     OpenTelemetry.logger.error("TESTING123")
@@ -73,7 +74,7 @@ class InternalAwsXRayRemoteSampler
     @client_id = self.class.generate_client_id
     @rule_cache = OpenTelemetry::Sampler::XRay::RuleCache.new(resource)
 
-    # @sampling_client = AwsXraySamplingClient.new(@aws_proxy_endpoint, @sampler_diag)
+    @sampling_client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(@aws_proxy_endpoint)
 
     # Start the Sampling Rules poller
     start_sampling_rules_poller
@@ -96,6 +97,8 @@ class InternalAwsXRayRemoteSampler
 
     matched_rule = @rule_cache.get_matched_rule(attributes)
     if matched_rule
+      # puts "should?"
+      # puts matched_rule.sampling_rule.rule_name
       return matched_rule.should_sample?(
         trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
       )
@@ -117,13 +120,14 @@ class InternalAwsXRayRemoteSampler
 
   def start_sampling_rules_poller
     # Execute first update
-    url = URI::HTTP.build(host: '127.0.0.1', path: '/GetSamplingRules', port: 2000)
-    headers = {'content-type': 'application/json'}
-
-    res = Net::HTTP.post(url, '{}', headers) # => #<Net::HTTPCreated 201 Created readbody=true>
-    rules = JSON.parse(res.body)
-    puts rules["SamplingRuleRecords"]
-    update_sampling_rules(rules)
+    sampling_rules_response = @sampling_client.fetch_sampling_rules
+    if sampling_rules_response && sampling_rules_response.body && sampling_rules_response.body != ""
+      rules = JSON.parse(sampling_rules_response.body)
+      # puts rules["SamplingRuleRecords"]
+      update_sampling_rules(rules)
+    else
+      OpenTelemetry.logger.error('GetSamplingRules Response is falsy')
+    end
 
     # get_and_update_sampling_rules
     # Update sampling rules periodically
@@ -133,56 +137,50 @@ class InternalAwsXRayRemoteSampler
         # get_and_update_sampling_rules
 
 
-        # puts Net::HTTP::Get.new "#{@aws_proxy_endpoint}/GetSamplingRules"
-        res = Net::HTTP.post(url, '{}', headers) # => #<Net::HTTPCreated 201 Created readbody=true>
-        rules = JSON.parse(res.body)
-        puts rules["SamplingRuleRecords"]
-        update_sampling_rules(rules)
+        sampling_rules_response = @sampling_client.fetch_sampling_rules
+        if sampling_rules_response && sampling_rules_response.body && sampling_rules_response.body != ""
+          rules = JSON.parse(sampling_rules_response.body)
+          # puts rules["SamplingRuleRecords"]
+          update_sampling_rules(rules)
+        else
+          OpenTelemetry.logger.error('GetSamplingRules Response is falsy')
+        end
       end
     end
   end
 
   def start_sampling_targets_poller
-    url = URI::HTTP.build(host: '127.0.0.1', path: '/SamplingTargets', port: 2000)
-    headers = {'content-type': 'application/json'}
-
     @target_poller = Thread.new do
       loop do
-        sleep(@target_polling_interval + @target_polling_jitter_millis / 1000.0)
+        puts "target sleep for #{(@target_polling_interval*1000 + @target_polling_jitter_millis) / 1000.0}"
+        sleep((@target_polling_interval*1000 + @target_polling_jitter_millis) / 1000.0)
         # get_and_update_sampling_targets
 
         request_body = {
           SamplingStatisticsDocuments: @rule_cache.create_sampling_statistics_documents(@client_id)
         }
 
-        puts request_body.to_json
+        # puts request_body.to_json
 
-        res = Net::HTTP.post(url, request_body.to_json, headers) # => #<Net::HTTPCreated 201 Created readbody=true>
-        response = JSON.parse(res.body)
-        puts response
-        update_sampling_targets(response)
+        sampling_targets_response = @sampling_client.fetch_sampling_targets(request_body)
+        if sampling_targets_response && sampling_targets_response.body && sampling_targets_response.body != ""
+          response_body = JSON.parse(sampling_targets_response.body)
+          # puts response_body
+          update_sampling_targets(response_body)
+        else
+          OpenTelemetry.logger.debug('SamplingTargets Response is falsy')
+        end
       end
     end
   end
 
-  # def get_and_update_sampling_targets
-  #   request_body = {
-  #     sampling_statistics_documents: @rule_cache.create_sampling_statistics_documents(@client_id)
-  #   }
-
-  #   @sampling_client.fetch_sampling_targets(request_body) { |response| update_sampling_targets(response) }
-  # end
-
-  # def get_and_update_sampling_rules
-  #   @sampling_client.fetch_sampling_rules { |response| update_sampling_rules(response) }
-  # end
-
   def update_sampling_rules(response_object)
     sampling_rules = []
-    if response_object["SamplingRuleRecords"]
+    if response_object && response_object["SamplingRuleRecords"]
       response_object["SamplingRuleRecords"].each do |record|
         if record["SamplingRule"]
-          sampling_rules << SamplingRuleApplier.new(record["SamplingRule"])
+          sampling_rule = OpenTelemetry::Sampler::XRay::SamplingRule.new(record["SamplingRule"])
+          sampling_rules << SamplingRuleApplier.new(sampling_rule)
         end
       end
       @rule_cache.update_rules(sampling_rules)
@@ -193,28 +191,32 @@ class InternalAwsXRayRemoteSampler
 
   def update_sampling_targets(response_object)
     begin
-      target_documents = {}
+      if response_object && response_object["SamplingTargetDocuments"]
+        target_documents = {}
 
-      response_object["SamplingTargetDocuments"].each do |new_target|
-        target_documents[new_target["RuleName"]] = new_target
-      end
+        response_object["SamplingTargetDocuments"].each do |new_target|
+          target_documents[new_target["RuleName"]] = new_target
+        end
 
-      refresh_sampling_rules, next_polling_interval = @rule_cache.update_targets(
-        target_documents,
-        response_object["LastRuleModification"]
-      )
-      
-      @target_polling_interval = next_polling_interval
-      @target_poller.kill if @target_poller
-      start_sampling_targets_poller
+        refresh_sampling_rules, next_polling_interval = @rule_cache.update_targets(
+          target_documents,
+          response_object["LastRuleModification"]
+        )
 
-      if refresh_sampling_rules
-        OpenTelemetry.logger.debug('Performing out-of-band sampling rule polling to fetch updated rules.')
-        @rule_poller.kill if @rule_poller
-        start_sampling_rules_poller
+        # puts "polling interval: #{next_polling_interval}"
+        @target_polling_interval = next_polling_interval
+
+        if refresh_sampling_rules
+          OpenTelemetry.logger.debug('Performing out-of-band sampling rule polling to fetch updated rules.')
+          @rule_poller.kill if @rule_poller
+          start_sampling_rules_poller
+        end
+      else
+        OpenTelemetry.logger.debug('SamplingTargetDocuments from SamplingTargets request is not defined')
       end
     rescue StandardError => e
-      OpenTelemetry.logger.debug('Error occurred when updating Sampling Targets')
+      OpenTelemetry.logger.debug("Error occurred when updating Sampling Targets: #{e}")
+      raise e
     end
   end
 

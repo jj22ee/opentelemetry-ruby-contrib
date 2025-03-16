@@ -46,7 +46,7 @@ class SamplingRuleApplier
   attr_reader :sampling_rule
 
   def initialize(sampling_rule, statistics = OpenTelemetry::Sampler::XRay::Statistics.new, target = nil)
-    @sampling_rule = OpenTelemetry::Sampler::XRay::SamplingRule.new(sampling_rule)
+    @sampling_rule = sampling_rule
     @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(@sampling_rule.fixed_rate)
 
     @reservoir_sampler = if @sampling_rule.reservoir_size > 0
@@ -90,7 +90,7 @@ class SamplingRuleApplier
     if resource
       service_name = resource_hash[SEMRESATTRS_SERVICE_NAME] || ''
       cloud_platform = resource_hash[SEMRESATTRS_CLOUD_PLATFORM]
-      service_type = CLOUD_PLATFORM_MAPPING[cloud_platform] if cloud_platform.is_a?(String)
+      service_type = OpenTelemetry::Sampler::XRay::Utils::CLOUD_PLATFORM_MAPPING[cloud_platform] if cloud_platform.is_a?(String)
       resource_arn = get_arn(resource, attributes)
     end
 
@@ -124,6 +124,8 @@ class SamplingRuleApplier
 
     now = Time.now
     reservoir_expired = now >= @reservoir_expiry_time
+    # puts "#{now} >= #{@reservoir_expiry_time}"
+    # puts "#{now >= @reservoir_expiry_time}"
 
     unless reservoir_expired
       result = @reservoir_sampler.should_sample?(
@@ -158,20 +160,23 @@ class SamplingRuleApplier
   private
 
   def apply_target(target)
+    puts "hello"
     @borrowing_enabled = false
 
-    if target.reservoir_quota
-      @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target.reservoir_quota)
+    if target["ReservoirQuota"]
+      puts target["ReservoirQuota"]
+      puts target["RuleName"]
+      @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target["ReservoirQuota"])
     end
 
-    @reservoir_expiry_time = if target.reservoir_quota_ttl
-                              Time.at(target.reservoir_quota_ttl)
+    @reservoir_expiry_time = if target["ReservoirQuotaTTL"]
+                              Time.at(target["ReservoirQuotaTTL"])
                             else
                               Time.now
                             end
 
-    if target.fixed_rate
-      @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(target.fixed_rate)
+    if target["FixedRate"]
+      @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(target["FixedRate"])
     end
   end
 

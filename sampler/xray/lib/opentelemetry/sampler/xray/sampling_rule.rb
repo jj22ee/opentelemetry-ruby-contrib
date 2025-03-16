@@ -15,6 +15,7 @@ class SamplingRule
     # The AWS API docs mark `rule_name` as an optional field but in practice it seems to always be
     # present, and sampling targets could not be computed without it. For now provide an arbitrary fallback just in
     # case the AWS API docs are correct.
+    # puts "===> " + sampling_rule.to_json
     @rule_name = sampling_rule["RuleName"] || 'Default'
     @rule_arn = sampling_rule["RuleARN"]
     @priority = sampling_rule["Priority"]
@@ -29,8 +30,8 @@ class SamplingRule
     @version = sampling_rule["Version"]
     @attributes = sampling_rule["Attributes"]
 
-    puts self.rule_name
-    puts self.reservoir_size + 2
+    # puts self.rule_name
+    # puts self.reservoir_size + 2
   end
 
   def equals?(other)

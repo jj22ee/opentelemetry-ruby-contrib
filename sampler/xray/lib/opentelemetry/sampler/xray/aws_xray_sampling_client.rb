@@ -6,68 +6,56 @@ require 'net/http'
 require 'json'
 require 'uri'
 
-class AwsXraySamplingClient
-  def initialize(endpoint, sampler_diag)
-    @get_sampling_rules_endpoint = "#{endpoint}/GetSamplingRules"
-    @sampling_targets_endpoint = "#{endpoint}/SamplingTargets"
-    @sampler_diag = sampler_diag
+module OpenTelemetry
+  module Sampler
+    module XRay
+
+class AWSXRaySamplingClient
+  def initialize(endpoint)
+    @endpoint = endpoint
+    @host, @port = parse_endpoint(@endpoint)
+
+    @sampling_rules_url = URI::HTTP.build(host: @host, path: '/GetSamplingRules', port: @port)
+    @sampling_targets_url = URI::HTTP.build(host: @host, path: '/SamplingTargets', port: @port)
+    @request_headers = {'content-type': 'application/json'}
   end
 
-  def fetch_sampling_targets(request_body, &callback)
-    make_request(
-      @sampling_targets_endpoint,
-      callback,
-      -> (msg) { @sampler_diag.debug(msg) },
-      request_body.to_json
-    )
+  def fetch_sampling_rules()
+    begin
+      OpenTelemetry::Common::Utilities.untraced {
+        return Net::HTTP.post(@sampling_rules_url, '{}', @request_headers)
+      }
+    rescue StandardError => e
+      OpenTelemetry.logger.debug("Error occurred when fetching Sampling Rules: #{e}")
+    end
+    return nil
   end
 
-  def fetch_sampling_rules(&callback)
-    make_request(
-      @get_sampling_rules_endpoint,
-      callback,
-      -> (msg) { @sampler_diag.error(msg) }
-    )
+  def fetch_sampling_targets(request_body)
+    begin
+      OpenTelemetry::Common::Utilities.untraced {
+        return Net::HTTP.post(@sampling_targets_url, request_body.to_json, @request_headers)
+      }
+    rescue StandardError => e
+      OpenTelemetry.logger.debug("Error occurred when fetching Sampling Targets: #{e}")
+    end
+    return nil
   end
 
   private
 
-  def make_request(url, callback, logger, request_body_json = nil)
-    uri = URI(url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = uri.scheme == 'https'
-
-    request = Net::HTTP::Post.new(uri)
-
-    if request_body_json
-      request['Content-Type'] = 'application/json'
-      request['Content-Length'] = request_body_json.bytesize.to_s
-      request.body = request_body_json
-    end
-
-    # Note: Ruby doesn't have a direct equivalent to suppressTracing
-    # You would need to implement similar functionality based on your tracing setup
-
-    begin
-      response = http.request(request)
-      
-      if response.code.to_i == 200 && !response.body.empty?
-        begin
-          response_object = JSON.parse(response.body)
-          callback.call(response_object) if callback
-        rescue JSON::ParserError => e
-          logger.call("Error occurred when parsing responseData from #{url}")
-        end
-      else
-        @sampler_diag.debug("#{url} Response Code is: #{response.code}")
-        @sampler_diag.debug("#{url} responseData is: #{response.body}")
-      end
-    rescue StandardError => e
-      logger.call("Error occurred when making an HTTP POST to #{url}: #{e}")
-    end
+  def parse_endpoint(endpoint)
+    host, port = endpoint.split(':')
+    [host, port.to_i]
+  rescue StandardError => e
+    OpenTelemetry.logger.error("Invalid endpoint: #{endpoint}")
+    raise e
   end
 end
 
+    end
+  end
+end
 
 
 

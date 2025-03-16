@@ -84,14 +84,16 @@ class RuleCache
     min_polling_interval = nil
     next_polling_interval = DEFAULT_TARGET_POLLING_INTERVAL_SECONDS
 
+    puts "uhM??"
+
     @cache_lock.synchronize {
       @rule_appliers.each_with_index do |rule, index|
         target = target_documents[rule.sampling_rule.rule_name]
         if target
           @rule_appliers[index] = rule.with_target(target)
-          if target.interval
-            if min_polling_interval.nil? || min_polling_interval > target.interval
-              min_polling_interval = target.interval
+          if target["Interval"]
+            if min_polling_interval.nil? || min_polling_interval > target["Interval"]
+              min_polling_interval = target["Interval"]
             end
           end
         else

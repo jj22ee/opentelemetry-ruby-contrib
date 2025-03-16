@@ -21,6 +21,11 @@ class RateLimiter
   end
 
   def take(cost = 1)
+
+    # puts"- #{@max_balance_millis}"
+    # puts"- #{@quota}"
+    # puts"- #{@wallet_floor_millis}"
+
     return false if @quota == 0
 
     quota_per_millis = @quota / 1000.0
@@ -31,10 +36,13 @@ class RateLimiter
     @lock.synchronize {
       wallet_ceiling_millis = Time.now.to_f * 1000
       current_balance_millis = wallet_ceiling_millis - @wallet_floor_millis
+      # puts"- #{wallet_ceiling_millis}"
       current_balance_millis = [current_balance_millis, @max_balance_millis].min
       pending_remaining_balance_millis = current_balance_millis - cost_in_millis
+      # puts"pending_remaining_balance_millis- #{pending_remaining_balance_millis}"
 
       if pending_remaining_balance_millis >= 0
+        # puts"yes- #{pending_remaining_balance_millis}"
         @wallet_floor_millis = wallet_ceiling_millis - pending_remaining_balance_millis
         return true
       end

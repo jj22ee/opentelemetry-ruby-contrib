@@ -22,8 +22,10 @@ class RateLimitingSampler
   end
 
   def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
+    # puts "rateLimit shouldtry"
     tracestate = OpenTelemetry::Trace.current_span(parent_context).context.tracestate
     if @reservoir.take(1)
+      puts "reservoir.take(1)"
       OpenTelemetry::SDK::Trace::Samplers::Result.new(
         decision:  OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
         tracestate: tracestate,
