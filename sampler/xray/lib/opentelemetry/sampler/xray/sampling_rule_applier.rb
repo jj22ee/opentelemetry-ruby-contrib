@@ -5,43 +5,21 @@
 # SPDX-License-Identifier: Apache-2.0
 
 require 'opentelemetry/sdk'
+require 'opentelemetry-semantic_conventions'
 require 'date'
 require_relative 'sampling_rule'
 require_relative 'statistics'
 require_relative 'rate_limiting_sampler'
 require_relative 'utils'
 
-# Constants to mirror the TypeScript semantic conventions
-SEMATTRS_AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked_arn'
-SEMATTRS_HTTP_HOST = 'http.host'
-SEMATTRS_HTTP_METHOD = 'http.method'
-SEMATTRS_HTTP_TARGET = 'http.target'
-SEMATTRS_HTTP_URL = 'http.url'
-SEMRESATTRS_CLOUD_PLATFORM = 'cloud.platform'
-SEMRESATTRS_SERVICE_NAME = 'service.name'
-
-ATTR_URL_PATH = 'url.path'
-ATTR_URL_FULL = 'url.full'
-ATTR_HTTP_REQUEST_METHOD = 'http.request.method'
-ATTR_SERVER_ADDRESS = 'server.address'
-ATTR_CLIENT_ADDRESS = 'client.address'
-
-SEMRESATTRS_AWS_ECS_CONTAINER_ARN = 'aws.ecs.container.arn'
-SEMRESATTRS_AWS_ECS_CLUSTER_ARN = 'aws.ecs.cluster.arn'
-SEMRESATTRS_AWS_EKS_CLUSTER_ARN = 'aws.eks.cluster.arn'
-SEMRESATTRS_CLOUD_PLATFORM = 'cloud.platform'
-CLOUDPLATFORMVALUES_AWS_LAMBDA = 'aws.lambda'
-SEMRESATTRS_FAAS_ID = 'faas.id'
-SEMATTRS_AWS_LAMBDA_INVOKED_ARN = 'aws.lambda.invoked.arn'
-
-# Constants would typically be defined in a separate configuration or constants file
-MAX_DATE_TIME_SECONDS = Time.at(8_640_000_000_000)
-
 module OpenTelemetry
   module Sampler
     module XRay
       class SamplingRuleApplier
         attr_reader :sampling_rule
+
+        # Constants would typically be defined in a separate configuration or constants file
+        MAX_DATE_TIME_SECONDS = Time.at(8_640_000_000_000)
 
         def initialize(sampling_rule, statistics = OpenTelemetry::Sampler::XRay::Statistics.new, target = nil)
           @sampling_rule = sampling_rule
@@ -74,10 +52,10 @@ module OpenTelemetry
           http_host = nil
 
           if !attributes.nil?
-            http_target = attributes[SEMATTRS_HTTP_TARGET] || attributes[ATTR_URL_PATH]
-            http_url = attributes[SEMATTRS_HTTP_URL] || attributes[ATTR_URL_FULL]
-            http_method = attributes[SEMATTRS_HTTP_METHOD] || attributes[ATTR_HTTP_REQUEST_METHOD]
-            http_host = attributes[SEMATTRS_HTTP_HOST] || attributes[ATTR_SERVER_ADDRESS] || attributes[ATTR_CLIENT_ADDRESS]
+            http_target = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_TARGET]
+            http_url = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_URL]
+            http_method = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_METHOD]
+            http_host = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_HOST]
           end
 
           service_type = nil
@@ -86,8 +64,8 @@ module OpenTelemetry
           resource_hash = resource.attribute_enumerator.to_h
 
           if resource
-            service_name = resource_hash[SEMRESATTRS_SERVICE_NAME] || ''
-            cloud_platform = resource_hash[SEMRESATTRS_CLOUD_PLATFORM]
+            service_name = resource_hash[OpenTelemetry::SemanticConventions::Resource::SERVICE_NAME] || ''
+            cloud_platform = resource_hash[OpenTelemetry::SemanticConventions::Resource::CLOUD_PLATFORM]
             service_type = OpenTelemetry::Sampler::XRay::Utils::CLOUD_PLATFORM_MAPPING[cloud_platform] if cloud_platform.is_a?(String)
             resource_arn = get_arn(resource, attributes)
           end
@@ -175,19 +153,14 @@ module OpenTelemetry
 
         def get_arn(resource, attributes)
           resource_hash = resource.attribute_enumerator.to_h
-          arn = resource_hash[SEMRESATTRS_AWS_ECS_CONTAINER_ARN] ||
-                resource_hash[SEMRESATTRS_AWS_ECS_CLUSTER_ARN] ||
-                resource_hash[SEMRESATTRS_AWS_EKS_CLUSTER_ARN]
+          arn = resource_hash[OpenTelemetry::SemanticConventions::Resource::AWS_ECS_CONTAINER_ARN] ||
+                resource_hash[OpenTelemetry::SemanticConventions::Resource::AWS_ECS_CLUSTER_ARN] ||
+                resource_hash[OpenTelemetry::SemanticConventions::Resource::AWS_EKS_CLUSTER_ARN]
 
-          if arn.nil? && resource_hash[SEMRESATTRS_CLOUD_PLATFORM] == CLOUDPLATFORMVALUES_AWS_LAMBDA
-            arn = get_lambda_arn(resource, attributes)
+          if arn.nil?
+            arn = attributes[OpenTelemetry::SemanticConventions::Trace::AWS_LAMBDA_INVOKED_ARN] || resource_hash[OpenTelemetry::SemanticConventions::Resource::FAAS_ID]
           end
           arn
-        end
-
-        def get_lambda_arn(resource, attributes)
-          resource_hash = resource.attribute_enumerator.to_h
-          resource_hash[SEMRESATTRS_FAAS_ID] || attributes[SEMATTRS_AWS_LAMBDA_INVOKED_ARN]
         end
       end
     end

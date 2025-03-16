@@ -4,16 +4,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# The cache expires 1 hour after the last refresh time.
-RULE_CACHE_TTL_MILLIS = 60 * 60 * 1000
-
-# 10 second default sampling targets polling interval
-DEFAULT_TARGET_POLLING_INTERVAL_SECONDS = 10
-
 module OpenTelemetry
   module Sampler
     module XRay
       class RuleCache
+        # The cache expires 1 hour after the last refresh time.
+        RULE_CACHE_TTL_MILLIS = 60 * 60 * 1000
+
         def initialize(sampler_resource)
           @rule_appliers = []
           @sampler_resource = sampler_resource
