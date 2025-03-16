@@ -1,0 +1,2430 @@
+Started GET "/" for 127.0.0.1 at 2025-03-06 14:02:19 -0800
+Processing by ApplicationController#root as HTML
+  Rendering application/root.html.erb
+  Rendered application/root.html.erb (Duration: 3.2ms | Allocations: 400)
+Completed 200 OK in 9ms (Views: 8.9ms | Allocations: 2136)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:02:20 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:02:37 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 336ms (Views: 0.3ms | Allocations: 2189)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:02:43 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 258ms (Views: 0.1ms | Allocations: 1394)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:03:07 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 246ms (Views: 0.2ms | Allocations: 2510)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:03:11 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 214ms (Views: 0.2ms | Allocations: 1193)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:03:11 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:03:40 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 262ms (Views: 0.3ms | Allocations: 2528)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:03:41 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:03:43 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 221ms (Views: 0.2ms | Allocations: 1287)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:03:43 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:03:44 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 302ms (Views: 0.2ms | Allocations: 1189)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:03:44 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:04:16 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 283ms (Views: 0.3ms | Allocations: 2427)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:04:17 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:17:26 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 376ms (Views: 0.7ms | Allocations: 3104)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:17:27 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:19:01 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 353ms (Views: 0.2ms | Allocations: 3154)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:19:01 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:22:13 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 292ms (Views: 0.3ms | Allocations: 2821)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:22:14 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:23:19 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 345ms (Views: 0.4ms | Allocations: 2997)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:23:20 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:24:17 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 288ms (Views: 0.2ms | Allocations: 2690)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:24:18 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:25:27 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 365ms (Views: 0.3ms | Allocations: 3181)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:25:28 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:25:51 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 336ms (Views: 0.3ms | Allocations: 2953)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:25:51 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:35:55 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 285ms (Views: 0.3ms | Allocations: 2925)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:35:55 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:36:21 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 275ms (Views: 0.3ms | Allocations: 2998)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:36:22 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:39:08 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 248ms (Views: 0.3ms | Allocations: 2877)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:39:09 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:39:30 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 192ms (Views: 0.3ms | Allocations: 2980)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:39:31 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:44:54 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 375ms (Views: 0.6ms | Allocations: 2786)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:44:55 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:48:13 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 792ms (Views: 0.3ms | Allocations: 2797)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:48:14 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:48:52 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 213ms (Views: 0.4ms | Allocations: 2809)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:48:52 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:51:53 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 374ms (Views: 0.3ms | Allocations: 2937)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:51:54 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:54:20 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 387ms (Views: 0.3ms | Allocations: 2856)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:54:21 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 14:59:47 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 395ms (Views: 0.6ms | Allocations: 2789)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 14:59:47 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:11:52 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 356ms (Views: 0.4ms | Allocations: 2852)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:11:52 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:12:51 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 325ms (Views: 0.3ms | Allocations: 2776)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:12:51 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-06 15:18:01 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/test"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:18:11 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 290ms (Views: 0.3ms | Allocations: 2584)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:23:50 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 349ms (Views: 0.3ms | Allocations: 2742)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:23:50 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:28:27 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 353ms (Views: 0.3ms | Allocations: 2670)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:28:27 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:30:29 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 360ms (Views: 0.3ms | Allocations: 2677)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:30:30 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:31:06 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 197ms (Views: 0.4ms | Allocations: 2914)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:06 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:31:09 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 210ms (Views: 0.1ms | Allocations: 1490)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:09 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:31:10 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 210ms (Views: 0.1ms | Allocations: 1487)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:11 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:31:13 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 183ms (Views: 0.1ms | Allocations: 1533)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:13 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:31:16 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 183ms (Views: 0.1ms | Allocations: 1514)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:16 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:31:23 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 300ms (Views: 0.2ms | Allocations: 19403)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:23 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:31:26 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 80ms (Views: 0.1ms | Allocations: 5438)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:31:26 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:32:00 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 331ms (Views: 0.4ms | Allocations: 20036)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:32:00 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:33:00 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 306ms (Views: 0.3ms | Allocations: 20038)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:33:01 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:33:04 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 90ms (Views: 0.1ms | Allocations: 5441)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:33:04 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:33:59 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 287ms (Views: 0.3ms | Allocations: 20040)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:33:59 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:34:18 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 298ms (Views: 0.3ms | Allocations: 20038)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:34:18 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:34:35 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 283ms (Views: 0.5ms | Allocations: 20038)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:34:35 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:35:39 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 359ms (Views: 0.5ms | Allocations: 20039)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:35:40 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:35:56 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 298ms (Views: 0.3ms | Allocations: 20038)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:35:56 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:36:50 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 300ms (Views: 0.3ms | Allocations: 20040)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:36:51 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:37:26 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 283ms (Views: 0.2ms | Allocations: 20038)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:37:26 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-06 15:37:43 -0800
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 316ms (Views: 0.3ms | Allocations: 20040)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:37:44 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:38:33 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 294ms (Views: 1.3ms | Allocations: 2284)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:38:34 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:42:32 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 400ms (Views: 0.3ms | Allocations: 2963)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:42:33 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:42:35 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 206ms (Views: 0.2ms | Allocations: 1633)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:42:35 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:42:36 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 172ms (Views: 0.2ms | Allocations: 1819)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:42:36 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 15:42:38 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 189ms (Views: 0.2ms | Allocations: 1830)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 15:42:38 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:05:46 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 412ms (Views: 0.5ms | Allocations: 2956)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:05:47 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:10:10 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 306ms (Views: 0.2ms | Allocations: 3063)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:10:11 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:10:16 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 247ms (Views: 0.1ms | Allocations: 1521)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:10:16 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:10:23 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 330ms (Views: 0.1ms | Allocations: 1575)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:10:23 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:10:44 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 356ms (Views: 0.3ms | Allocations: 2900)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:10:44 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:13:14 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 217ms (Views: 0.2ms | Allocations: 3023)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:13:14 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:13:17 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 195ms (Views: 0.2ms | Allocations: 1807)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:13:17 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:14:23 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 285ms (Views: 0.3ms | Allocations: 2965)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:14:23 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 16:14:28 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 207ms (Views: 0.3ms | Allocations: 1514)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 16:14:28 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 17:30:03 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 359ms (Views: 0.6ms | Allocations: 2939)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 17:30:03 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2025-03-06 17:51:51 -0800
+Processing by ApplicationController#root as HTML
+  Rendering application/root.html.erb
+  Rendered application/root.html.erb (Duration: 2.1ms | Allocations: 579)
+Completed 200 OK in 47ms (Views: 46.4ms | Allocations: 2348)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 17:51:51 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 17:59:39 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 219ms (Views: 0.3ms | Allocations: 3080)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 17:59:43 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 179ms (Views: 0.1ms | Allocations: 1560)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 17:59:43 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-06 17:59:47 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 138ms (Views: 0.1ms | Allocations: 1666)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-06 17:59:48 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 10:17:23 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 519ms (Views: 1.5ms | Allocations: 1390)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 10:17:24 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 17:50:29 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 352ms (Views: 0.3ms | Allocations: 2862)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 17:50:30 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 17:50:33 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 271ms (Views: 0.2ms | Allocations: 1537)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 17:50:33 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 17:50:34 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 220ms (Views: 0.1ms | Allocations: 1538)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 17:50:34 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 17:50:37 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 225ms (Views: 0.1ms | Allocations: 1631)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 17:50:38 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-07 18:29:45 -0800
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 372ms (Views: 0.3ms | Allocations: 3053)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-07 18:29:46 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 14:46:58 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 379ms (Views: 0.3ms | Allocations: 2915)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 14:46:59 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-s3" for 127.0.0.1 at 2025-03-10 14:47:05 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/aws-sdk-s3"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 14:47:05 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-10 14:47:13 -0700
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 355ms (Views: 0.2ms | Allocations: 19400)
+
+
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-10 14:47:25 -0700
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 301ms (Views: 0.2ms | Allocations: 5685)
+
+
+Started GET "/aws-sdk-call" for 127.0.0.1 at 2025-03-10 15:07:57 -0700
+Processing by ApplicationController#aws_sdk_call as HTML
+Completed 200 OK in 313ms (Views: 0.2ms | Allocations: 20040)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:08:30 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 376ms (Views: 0.4ms | Allocations: 3029)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:08:36 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 293ms (Views: 0.1ms | Allocations: 1495)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 15:08:36 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:09:06 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 374ms (Allocations: 4369)
+
+
+  
+NoMethodError (undefined method `traceId' for {:traceId=>"1-67cf6302-4db4ab16615bc0f8e6179c93"}:Hash):
+  
+app/controllers/application_controller.rb:34:in `outgoing_http_call'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 15:09:07 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:09:14 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 235ms (Allocations: 3245)
+
+
+  
+NoMethodError (undefined method `traceId' for {:traceId=>"1-67cf630a-d83960260ebe9dacc1eb829d"}:Hash):
+  
+app/controllers/application_controller.rb:34:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:09:45 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 237ms (Views: 0.4ms | Allocations: 4935)
+
+
+  
+NoMethodError (undefined method `traceId' for "{\"traceId\":\"1-67cf6329-dff9838ead2862b04d0cbb49\"}":String):
+  
+app/controllers/application_controller.rb:34:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:10:17 -0700
+  
+SyntaxError (/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:34: `@' without identifiers is not allowed as an instance variable name
+...ce_id)).instance_variable_get(@:traceId)
+...                              ^
+/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:34: syntax error, unexpected ':', expecting ')'
+...e_id)).instance_variable_get(@:traceId)
+...                              ^
+):
+  
+app/controllers/application_controller.rb:34: `@' without identifiers is not allowed as an instance variable name
+app/controllers/application_controller.rb:34: syntax error, unexpected ':', expecting ')'
+app/controllers/application_controller.rb:34: `@' without identifiers is not allowed as an instance variable name
+app/controllers/application_controller.rb:34: syntax error, unexpected ':', expecting ')'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:10:51 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 406 Not Acceptable in 401ms (Allocations: 3375)
+
+
+  
+ActionController::MissingExactTemplate (ApplicationController#outgoing_http_call is missing a template for request formats: text/html):
+  
+actionpack (7.0.4.3) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.4.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+<internal:kernel>:90:in `tap'
+actionpack (7.0.4.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.4.3) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.4.3) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.4.3) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:107:in `run_callbacks'
+actionpack (7.0.4.3) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.4.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.4.3) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.4.3) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.4.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.4.3) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.4.3) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.4.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+actionpack (7.0.4.3) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.4.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.13) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.13) lib/rack/etag.rb:27:in `call'
+rack (2.2.13) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.13) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.13) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.13) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4.3) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.13) lib/rack/method_override.rb:24:in `call'
+rack (2.2.13) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.13) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack (2.2.13) lib/rack/events.rb:112:in `call'
+railties (7.0.4.3) lib/rails/engine.rb:530:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:12:03 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 294ms (Allocations: 5701)
+
+
+  
+ActionView::MissingTemplate (Missing template application/outgoing_http_call with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+
+Searched in:
+  * "/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/views"
+):
+  
+app/controllers/application_controller.rb:34:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:12:28 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 205)
+Completed 200 OK in 352ms (Views: 7.1ms | Allocations: 4404)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:12:35 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 219ms (Allocations: 3305)
+
+
+  
+ActionView::MissingTemplate (Missing template application/outgoing_http_call with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+
+Searched in:
+  * "/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/views"
+):
+  
+app/controllers/application_controller.rb:34:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:12:56 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 178ms (Views: 0.2ms | Allocations: 1714)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:11 -0700
+  
+SyntaxError (/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:33: syntax error, unexpected ')', expecting `end' or dummy end
+...ent_span.context.hex_trace_id)).instance_variable_get(:@trac...
+...                              ^
+):
+  
+app/controllers/application_controller.rb:33: syntax error, unexpected ')', expecting `end' or dummy end
+app/controllers/application_controller.rb:33: syntax error, unexpected ')', expecting `end' or dummy end
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:26 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 221ms (Views: 0.1ms | Allocations: 1622)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:30 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 214ms (Views: 0.1ms | Allocations: 1681)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:39 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 145ms (Views: 0.1ms | Allocations: 1803)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:45 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 178ms (Views: 0.2ms | Allocations: 1783)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:13:57 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 238ms (Allocations: 3362)
+
+
+  
+NoMethodError (undefined method `traceId' for {:traceId=>"1-67cf6425-c117a551f1e5006d80d7e31a"}:Hash):
+  
+app/controllers/application_controller.rb:33:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:12 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 375ms (Views: 0.2ms | Allocations: 1570)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:18 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 294ms (Views: 0.4ms | Allocations: 1688)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:23 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 308ms (Views: 0.2ms | Allocations: 1541)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:32 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 326ms (Views: 0.2ms | Allocations: 1570)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:38 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 303ms (Allocations: 2080)
+
+
+  
+ActionView::MissingTemplate (Missing template application/1-67cf644e-20cdca599798d0c7d36a3099 with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+
+Searched in:
+  * "/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/views"
+):
+  
+app/controllers/application_controller.rb:35:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:43 -0700
+  
+SyntaxError (/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+    render :raw (convert_otel_trace_id_to_xray...
+                ^
+):
+  
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:49 -0700
+  
+SyntaxError (/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+    render :html (convert_otel_trace_id_to_xray...
+                 ^
+):
+  
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:14:51 -0700
+  
+SyntaxError (/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+    render :html (convert_otel_trace_id_to_xray...
+                 ^
+):
+  
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+app/controllers/application_controller.rb:35: syntax error, unexpected '(', expecting `end' or dummy end
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:15:06 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 500 Internal Server Error in 297ms (Allocations: 2141)
+
+
+  
+ActionView::MissingTemplate (Missing template application/outgoing_http_call with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby]}.
+
+Searched in:
+  * "/Users/jjllee/Documents/aws-otel-ruby/sample-apps/integ-test-http-server/ruby-on-rails/app/views"
+):
+  
+app/controllers/application_controller.rb:35:in `outgoing_http_call'
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:15:11 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 168)
+Completed 200 OK in 310ms (Views: 1.3ms | Allocations: 2014)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:15:17 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+Completed 200 OK in 258ms (Views: 0.3ms | Allocations: 1539)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:15:20 -0700
+Processing by ApplicationController#outgoing_http_call as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 168)
+Completed 200 OK in 227ms (Views: 1.3ms | Allocations: 1926)
+
+
+Started GET "/outgoing-http-call" for 127.0.0.1 at 2025-03-10 15:15:44 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/outgoing-http-call"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 15:15:46 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 242ms (Views: 1.2ms | Allocations: 2139)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 15:16:53 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 169)
+Completed 200 OK in 265ms (Views: 1.1ms | Allocations: 2143)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 15:16:59 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 301ms (Views: 0.6ms | Allocations: 1813)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 21:46:09 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 438ms (Views: 13.9ms | Allocations: 4169)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 21:46:10 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 21:46:24 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 36)
+Completed 200 OK in 202ms (Views: 11.4ms | Allocations: 4219)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 21:46:28 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 138ms (Views: 0.5ms | Allocations: 1521)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 21:46:34 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 167ms (Views: 0.5ms | Allocations: 1526)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 21:46:34 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 21:46:49 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.7ms | Allocations: 193)
+Completed 200 OK in 179ms (Views: 9.6ms | Allocations: 4644)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:05:50 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 868)
+
+
+  
+NoMethodError (undefined method `expired?' for nil:NilClass):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:19:02 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 890)
+
+
+  
+NameError (undefined local variable or method `context' for #<OpenTelemetry::Sampler::XRay::InternalAwsXRayRemoteSampler:0x0000000115761c70 @rule_polling_interval_millis=10000, @rule_polling_jitter_millis=1830.9116161372797, @target_polling_interval=10, @target_polling_jitter_millis=11.101947184381434, @aws_proxy_endpoint="127.0.0.1:2000", @fallback_sampler=#<OpenTelemetry::Sampler::XRay::FallbackSampler:0x0000000114aa22c8 @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000114aa21b0 @probability=0.05, @id_upper_bound=922337203685477632, @description="TraceIdRatioBased{0.050000}">, @rate_limiting_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000114aa1e90 @quota=1, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x0000000114aa1cd8 @max_balance_millis=1000.0, @quota=1, @wallet_floor_millis=1741670336744.821>>>, @client_id="75c5f5e5d49fdcf182e52a26">):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:19:59 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 264)
+
+
+  
+NameError (undefined local variable or method `context' for #<OpenTelemetry::Sampler::XRay::InternalAwsXRayRemoteSampler:0x0000000115761c70 @rule_polling_interval_millis=10000, @rule_polling_jitter_millis=1830.9116161372797, @target_polling_interval=10, @target_polling_jitter_millis=11.101947184381434, @aws_proxy_endpoint="127.0.0.1:2000", @fallback_sampler=#<OpenTelemetry::Sampler::XRay::FallbackSampler:0x0000000114aa22c8 @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000114aa21b0 @probability=0.05, @id_upper_bound=922337203685477632, @description="TraceIdRatioBased{0.050000}">, @rate_limiting_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000114aa1e90 @quota=1, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x0000000114aa1cd8 @max_balance_millis=1000.0, @quota=1, @wallet_floor_millis=1741670336744.821>>>, @client_id="75c5f5e5d49fdcf182e52a26">):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:20:03 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 264)
+
+
+  
+NameError (undefined local variable or method `context' for #<OpenTelemetry::Sampler::XRay::InternalAwsXRayRemoteSampler:0x0000000115761c70 @rule_polling_interval_millis=10000, @rule_polling_jitter_millis=1830.9116161372797, @target_polling_interval=10, @target_polling_jitter_millis=11.101947184381434, @aws_proxy_endpoint="127.0.0.1:2000", @fallback_sampler=#<OpenTelemetry::Sampler::XRay::FallbackSampler:0x0000000114aa22c8 @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000114aa21b0 @probability=0.05, @id_upper_bound=922337203685477632, @description="TraceIdRatioBased{0.050000}">, @rate_limiting_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000114aa1e90 @quota=1, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x0000000114aa1cd8 @max_balance_millis=1000.0, @quota=1, @wallet_floor_millis=1741670336744.821>>>, @client_id="75c5f5e5d49fdcf182e52a26">):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:20:13 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 884)
+
+
+  
+NoMethodError (undefined method `should_sample' for #<OpenTelemetry::Sampler::XRay::FallbackSampler:0x0000000107be9bc0 @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000107be9b20 @probability=0.05, @id_upper_bound=922337203685477632, @description="TraceIdRatioBased{0.050000}">, @rate_limiting_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000107be9990 @quota=1, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x0000000107be98f0 @max_balance_millis=1000.0, @quota=1, @wallet_floor_millis=1741670410556.195>>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:20:59 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 887)
+
+
+  
+NoMethodError (undefined method `decision' for #<OpenTelemetry::SDK::Trace::Samplers::Result:0x000000010799c278 @decision=:__drop__, @attributes={"http.method"=>"GET", "http.url"=>"https://aws.amazon.com/", "faraday.adapter.name"=>"Faraday::Adapter::NetHttp", "net.peer.name"=>"aws.amazon.com"}, @tracestate=#<OpenTelemetry::Trace::Tracestate:0x00000001055f0e00 @hash={}>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:21:02 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 261)
+
+
+  
+NoMethodError (undefined method `decision' for #<OpenTelemetry::SDK::Trace::Samplers::Result:0x000000010854e148 @decision=:__drop__, @attributes={"http.method"=>"GET", "http.url"=>"https://aws.amazon.com/", "faraday.adapter.name"=>"Faraday::Adapter::NetHttp", "net.peer.name"=>"aws.amazon.com"}, @tracestate=#<OpenTelemetry::Trace::Tracestate:0x00000001055f0e00 @hash={}>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:41 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 37)
+Completed 200 OK in 227ms (Views: 29.6ms | Allocations: 4143)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:44 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 143ms (Views: 0.4ms | Allocations: 1529)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:50 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 162ms (Views: 0.5ms | Allocations: 1506)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:52 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:52 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 162ms (Views: 0.6ms | Allocations: 2308)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 13)
+Completed 200 OK in 138ms (Views: 0.5ms | Allocations: 2450)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:52 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 140ms (Views: 0.7ms | Allocations: 1720)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:23:53 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 175ms (Views: 0.5ms | Allocations: 1528)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:10 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 138ms (Views: 0.4ms | Allocations: 1626)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:10 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:12 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 173ms (Views: 0.6ms | Allocations: 1554)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:16 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 174ms (Views: 0.6ms | Allocations: 1623)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:20 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:20 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:20 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:20 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 218ms (Views: 6.5ms | Allocations: 6672)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 13)
+Completed 200 OK in 209ms (Views: 4.2ms | Allocations: 5216)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 13)
+  Rendering html template
+Completed 200 OK in 240ms (Views: 1.6ms | Allocations: 6658)
+
+
+  Rendered html template (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 238ms (Views: 2.2ms | Allocations: 6579)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:21 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:21 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:21 -0700
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:21 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:25 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:25 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:25 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:25 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 140ms (Views: 0.5ms | Allocations: 4378)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 129ms (Views: 1.4ms | Allocations: 4321)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 181ms (Views: 1.6ms | Allocations: 4983)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 228ms (Views: 1.4ms | Allocations: 6722)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:30 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:30 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:30 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:30 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 131ms (Views: 0.5ms | Allocations: 4064)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 141ms (Views: 0.4ms | Allocations: 4427)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 179ms (Views: 0.8ms | Allocations: 7037)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 197ms (Views: 0.5ms | Allocations: 6002)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 158ms (Views: 0.8ms | Allocations: 4768)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 200ms (Views: 1.2ms | Allocations: 7527)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.4ms | Allocations: 170)
+Completed 200 OK in 173ms (Views: 1.4ms | Allocations: 6412)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 182ms (Views: 2.5ms | Allocations: 7693)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:33 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 134ms (Views: 0.7ms | Allocations: 4768)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 133ms (Views: 0.9ms | Allocations: 3930)
+
+
+  Rendering html template
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 179ms (Views: 10.2ms | Allocations: 6970)
+
+
+Completed 200 OK in 181ms (Views: 8.9ms | Allocations: 7297)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:37 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:38 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-10 22:24:38 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:40 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:40 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:40 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:40 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 141ms (Views: 0.5ms | Allocations: 4418)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 142ms (Views: 1.2ms | Allocations: 4680)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.5ms | Allocations: 169)
+Completed 200 OK in 153ms (Views: 2.2ms | Allocations: 6191)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 13)
+Completed 200 OK in 159ms (Views: 2.1ms | Allocations: 7360)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:42 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:42 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:42 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:42 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 181ms (Views: 1.5ms | Allocations: 4906)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 167ms (Views: 1.9ms | Allocations: 5661)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 169ms (Views: 1.6ms | Allocations: 5854)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 181ms (Views: 0.9ms | Allocations: 7265)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:44 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:44 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:44 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:44 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 188ms (Views: 0.6ms | Allocations: 4467)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 175ms (Views: 1.0ms | Allocations: 5512)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 12)
+Completed 200 OK in 184ms (Views: 2.0ms | Allocations: 6509)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 182ms (Views: 1.7ms | Allocations: 6273)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:46 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:46 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:46 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:46 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 161ms (Views: 0.4ms | Allocations: 4341)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 142ms (Views: 1.6ms | Allocations: 4234)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 184ms (Views: 1.0ms | Allocations: 5230)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 252ms (Views: 47.5ms | Allocations: 6462)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:50 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:50 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:50 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:50 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 156ms (Views: 0.8ms | Allocations: 4665)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 155ms (Views: 0.8ms | Allocations: 4795)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 206ms (Views: 1.2ms | Allocations: 7891)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 171ms (Views: 1.3ms | Allocations: 7089)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:54 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:54 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:54 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:54 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 186ms (Views: 0.4ms | Allocations: 3651)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 234ms (Views: 0.5ms | Allocations: 5946)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 12)
+Completed 200 OK in 223ms (Views: 1.2ms | Allocations: 7090)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 220ms (Views: 0.7ms | Allocations: 6759)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 177ms (Views: 0.5ms | Allocations: 4566)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 195ms (Views: 0.8ms | Allocations: 6081)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 204ms (Views: 1.1ms | Allocations: 6423)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 12)
+Completed 200 OK in 209ms (Views: 3.2ms | Allocations: 6577)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:24:58 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 193ms (Views: 1.0ms | Allocations: 4580)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 158ms (Views: 0.8ms | Allocations: 4517)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 178ms (Views: 2.7ms | Allocations: 5875)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 207ms (Views: 2.5ms | Allocations: 7631)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:25:04 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 186ms (Views: 0.5ms | Allocations: 1605)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:25:07 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.5ms | Allocations: 12)
+Completed 200 OK in 153ms (Views: 2.7ms | Allocations: 1561)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:25:07 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 137ms (Views: 0.5ms | Allocations: 1614)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:25:12 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 148ms (Views: 0.7ms | Allocations: 1500)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 22:25:12 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 164ms (Views: 0.5ms | Allocations: 1607)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 23:13:55 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 37)
+Completed 200 OK in 329ms (Views: 9.7ms | Allocations: 4033)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 23:13:57 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 132ms (Views: 0.5ms | Allocations: 1609)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-10 23:42:42 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 37)
+Completed 200 OK in 193ms (Views: 7.2ms | Allocations: 3900)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:12:57 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 2ms (Allocations: 856)
+
+
+  
+NameError (uninitialized constant OpenTelemetry::Sampler::XRay::SamplingRuleApplier::SEMATTRS_HTTP_TARGET):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:13:38 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 855)
+
+
+  
+NameError (uninitialized constant OpenTelemetry::Sampler::XRay::SamplingRuleApplier::ATTR_URL_PATH):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:15:55 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 861)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x0000000107284990 @attributes={}>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:21:46 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 867)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x00000001165049b8 @attributes={}, @attribute_enumerator=#<Enumerator: {}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:22:20 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 868)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010dc54a00 @attributes={}, @attribute_enumerator=#<Enumerator: {}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:22:30 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 260)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010dc54a00 @attributes={}, @attribute_enumerator=#<Enumerator: {}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:22:34 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 260)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010dc54a00 @attributes={}, @attribute_enumerator=#<Enumerator: {}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:23:45 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 876)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010cfec808 @attributes={"hello"=>"testme"}, @attribute_enumerator=#<Enumerator: {"hello"=>"testme"}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:23:54 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 267)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010cfec808 @attributes={"hello"=>"testme"}, @attribute_enumerator=#<Enumerator: {"hello"=>"testme"}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:23:54 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:23:56 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 267)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010cfec808 @attributes={"hello"=>"testme"}, @attribute_enumerator=#<Enumerator: {"hello"=>"testme"}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:24:21 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 868)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x000000010bf94a00 @attributes={}, @attribute_enumerator=#<Enumerator: {}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:26:14 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 873)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x00000001091248a0 @attributes={"hello"=>"testme"}, @attribute_enumerator=#<Enumerator: {"hello"=>"testme"}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:26:57 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 867)
+
+
+  
+NameError (uninitialized constant OpenTelemetry::Sampler::XRay::SamplingRuleApplier::SEMRESATTRS_AWS_ECS_CONTAINER_ARN):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:29:52 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 877)
+
+
+  
+NoMethodError (protected method `attributes' called for #<OpenTelemetry::SDK::Resources::Resource:0x0000000111722510 @attributes={"hello"=>"testme"}, @attribute_enumerator=#<Enumerator: {"hello"=>"testme"}:each>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:29:52 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:31:44 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 870)
+
+
+  
+NoMethodError (undefined method `attributes' for {"hello"=>"testme"}:Hash):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:32:58 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 940)
+
+
+  
+NoMethodError (undefined method `attribute_match' for #<OpenTelemetry::Sampler::XRay::SamplingRuleApplier:0x0000000113b78450 @sampling_rule=#<OpenTelemetry::Sampler::XRay::SamplingRule:0x0000000113bbfa08 @rule_name="sample-none", @rule_arn="arn:aws:xray:us-east-1:976570290907:sampling-rule/sample-none", @priority=1, @reservoir_size=0, @fixed_rate=0.0, @service_name="manual", @service_type="*", @host="*", @http_method="*", @url_path="*", @resource_arn="*", @version=1, @attributes={}>, @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000113b99d08 @probability=0.0, @id_upper_bound=0, @description="TraceIdRatioBased{0.000000}">, @reservoir_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000113b99c40 @quota=0, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x0000000113b78400 @max_balance_millis=1000.0, @quota=0, @wallet_floor_millis=1741678374348.96, @lock=#<Thread::Mutex:0x0000000113b99bf0>>>, @reservoir_expiry_time=275760-09-12 17:00:00 -0700, @statistics=#<OpenTelemetry::Sampler::XRay::Statistics:0x0000000113b99da8 @request_count=0, @sample_count=0, @borrow_count=0>, @statistics_lock=#<Thread::Mutex:0x0000000113b99bc8>, @borrowing_enabled=true>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:38:04 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 14ms (Allocations: 1022)
+
+
+  
+NoMethodError (undefined method `should_sample?' for #<OpenTelemetry::Sampler::XRay::SamplingRuleApplier:0x00000001119e7638 @sampling_rule=#<OpenTelemetry::Sampler::XRay::SamplingRule:0x0000000111a2ed80 @rule_name="match-all", @rule_arn="arn:aws:xray:us-east-1:976570290907:sampling-rule/match-all", @priority=10, @reservoir_size=99, @fixed_rate=1.0, @service_name="*", @service_type="*", @host="*", @http_method="*", @url_path="*", @resource_arn="*", @version=1, @attributes={}>, @fixed_rate_sampler=#<OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased:0x0000000111a49108 @probability=1.0, @id_upper_bound=18446744073709551616, @description="TraceIdRatioBased{1.000000}">, @reservoir_sampler=#<OpenTelemetry::Sampler::XRay::RateLimitingSampler:0x0000000111a49040 @quota=1, @reservoir=#<OpenTelemetry::Sampler::XRay::RateLimiter:0x00000001119e75e8 @max_balance_millis=1000.0, @quota=1, @wallet_floor_millis=1741678672819.22, @lock=#<Thread::Mutex:0x0000000111a48ff0>>>, @reservoir_expiry_time=275760-09-12 17:00:00 -0700, @statistics=#<OpenTelemetry::Sampler::XRay::Statistics:0x0000000111a491a8 @request_count=0, @sample_count=0, @borrow_count=0>, @statistics_lock=#<Thread::Mutex:0x0000000111a48fc8>, @borrowing_enabled=true>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:40:10 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 994)
+
+
+  
+NoMethodError (undefined method `[]' for #<OpenTelemetry::SDK::Trace::Samplers::Result:0x00000001063af550 @decision=:__drop__, @attributes={"http.method"=>"GET", "http.url"=>"https://aws.amazon.com/", "faraday.adapter.name"=>"Faraday::Adapter::NetHttp", "net.peer.name"=>"aws.amazon.com"}, @tracestate=#<OpenTelemetry::Trace::Tracestate:0x00000001057a2d48 @hash={}>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:40:48 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 378)
+
+
+  
+NoMethodError (undefined method `[]' for #<OpenTelemetry::SDK::Trace::Samplers::Result:0x0000000107cc6f70 @decision=:__drop__, @attributes={"http.method"=>"GET", "http.url"=>"https://aws.amazon.com/", "faraday.adapter.name"=>"Faraday::Adapter::NetHttp", "net.peer.name"=>"aws.amazon.com"}, @tracestate=#<OpenTelemetry::Trace::Tracestate:0x00000001057a2d48 @hash={}>>):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:47:21 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 972)
+
+
+  
+ArgumentError (missing keyword: :tracestate):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:47:23 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 0ms (Allocations: 360)
+
+
+  
+ArgumentError (missing keyword: :tracestate):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:47:23 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:51:38 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 194ms (Allocations: 5805)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:51:39 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:52:00 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 187ms (Allocations: 3357)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:52:13 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 172ms (Allocations: 3469)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:52:20 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 143ms (Allocations: 3482)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:52:27 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 148ms (Allocations: 3362)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:52:27 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:40 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 190ms (Allocations: 5824)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:46 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 133ms (Allocations: 3540)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:49 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 151ms (Allocations: 3390)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:50 -0700
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:50 -0700
+Processing by ApplicationController#test as HTML
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 167ms (Allocations: 32995)
+
+
+  Rendering html template
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Completed 500 Internal Server Error in 172ms (Allocations: 35872)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:54:50 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 138ms (Allocations: 60752)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:55:06 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 178ms (Allocations: 3373)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:55:58 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 163ms (Allocations: 3339)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:56:05 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 130ms (Allocations: 3513)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 00:56:06 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:57:03 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 227ms (Allocations: 3394)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:57:22 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.4ms | Allocations: 193)
+Completed 200 OK in 448ms (Views: 29.2ms | Allocations: 4535)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:57:26 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 168)
+Completed 200 OK in 174ms (Views: 0.9ms | Allocations: 1945)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:57:29 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.8ms | Allocations: 168)
+Completed 200 OK in 170ms (Views: 1.3ms | Allocations: 2025)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:58:25 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 284ms (Allocations: 5923)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:59:04 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 144ms (Allocations: 3349)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:59:42 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 216ms (Allocations: 5671)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:59:46 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 142ms (Allocations: 3162)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:59:50 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 2124ms (Allocations: 4811)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 00:59:54 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 178ms (Allocations: 3332)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:00:08 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 37)
+Completed 200 OK in 173ms (Views: 11.0ms | Allocations: 3925)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:00:10 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 169)
+Completed 200 OK in 1174ms (Views: 0.8ms | Allocations: 1838)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:00:58 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 37)
+Completed 200 OK in 224ms (Views: 11.6ms | Allocations: 3941)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 01:00:58 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:01:01 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 136ms (Views: 0.6ms | Allocations: 1503)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:01:04 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 133ms (Views: 0.5ms | Allocations: 1562)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:01:28 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 176ms (Allocations: 5982)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:04:17 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.7ms | Allocations: 193)
+Completed 200 OK in 224ms (Views: 12.5ms | Allocations: 4483)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:04:19 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 173ms (Views: 0.8ms | Allocations: 1949)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:04:29 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 189ms (Allocations: 5866)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:06:17 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 186ms (Allocations: 5955)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:06:22 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 1187ms (Allocations: 3301)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:06:27 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 151ms (Allocations: 3392)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:12:00 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 201ms (Allocations: 6041)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:12:18 -0700
+Processing by ApplicationController#test as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 867)
+
+
+  
+NoMethodError (undefined method `&' for {"http.method"=>"GET", "http.url"=>"https://aws.amazon.com/", "faraday.adapter.name"=>"Faraday::Adapter::NetHttp", "net.peer.name"=>"aws.amazon.com"}:Hash):
+  
+app/controllers/application_controller.rb:25:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:14:50 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 245ms (Allocations: 5938)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:16:47 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+Completed 500 Internal Server Error in 250ms (Allocations: 5808)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/application_controller.rb:28:in `test'
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:18:37 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.5ms | Allocations: 193)
+Completed 200 OK in 226ms (Views: 12.0ms | Allocations: 4490)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:18:42 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 133ms (Views: 0.8ms | Allocations: 2050)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:18:47 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.2ms | Allocations: 168)
+Completed 200 OK in 166ms (Views: 0.6ms | Allocations: 2114)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:18:47 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.3ms | Allocations: 168)
+Completed 200 OK in 173ms (Views: 1.0ms | Allocations: 2162)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:36 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.6ms | Allocations: 193)
+Completed 200 OK in 193ms (Views: 15.3ms | Allocations: 4552)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:49 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 194ms (Views: 8.6ms | Allocations: 3870)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:53 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 140ms (Views: 0.5ms | Allocations: 1557)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:57 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:57 -0700
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 181ms (Views: 0.9ms | Allocations: 1852)
+
+
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:58 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 13)
+Completed 200 OK in 188ms (Views: 0.5ms | Allocations: 2592)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 162ms (Views: 0.5ms | Allocations: 3010)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:20:59 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 127ms (Views: 0.6ms | Allocations: 1602)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:01 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 176ms (Views: 0.6ms | Allocations: 1666)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:14 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 140ms (Views: 0.6ms | Allocations: 1800)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-03-11 01:21:14 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:15 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 179ms (Views: 0.6ms | Allocations: 1634)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:15 -0700
+Processing by ApplicationController#test as HTML
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:16 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 130ms (Views: 0.8ms | Allocations: 1599)
+
+
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 1189ms (Views: 13.6ms | Allocations: 4023)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:41 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 140ms (Views: 0.5ms | Allocations: 1571)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:46 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 147ms (Views: 0.4ms | Allocations: 1599)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:46 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 138ms (Views: 0.6ms | Allocations: 1693)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:21:59 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 13)
+Completed 200 OK in 147ms (Views: 0.4ms | Allocations: 1638)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:22:00 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 170ms (Views: 0.4ms | Allocations: 1646)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:22:01 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 165ms (Views: 0.4ms | Allocations: 1619)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:22:01 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | Allocations: 12)
+Completed 200 OK in 181ms (Views: 0.8ms | Allocations: 1632)
+
+
+Started GET "/test" for 127.0.0.1 at 2025-03-11 01:22:02 -0700
+Processing by ApplicationController#test as HTML
+  Rendering html template
+  Rendered html template (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 137ms (Views: 0.6ms | Allocations: 1578)
+
+
