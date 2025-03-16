@@ -25,7 +25,7 @@ Or, if you use [bundler][bundler-home], include `opentelemetry-sampler-xray` in 
 In your application:
 
 ```ruby
-OpenTelemetry.tracer_provider.sampler = OpenTelemetry::Sampler::XRay::InternalAwsXRayRemoteSampler.new(
+OpenTelemetry.tracer_provider.sampler = OpenTelemetry::Sampler::XRay::AwsXRayRemoteSampler.new(
     polling_interval: 300, resource: OpenTelemetry::SDK::Resources::Resource.create({
         "service.name"=>"my-service-name",
         "cloud.platform"=>"aws_ec2"

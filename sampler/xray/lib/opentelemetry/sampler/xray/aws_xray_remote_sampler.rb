@@ -4,14 +4,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# require 'opentelemetry/api'
+require 'net/http'
+require 'json'
 require 'opentelemetry/sdk'
 require_relative 'fallback_sampler'
 require_relative 'sampling_rule_applier'
 require_relative 'rule_cache'
 require_relative 'aws_xray_sampling_client'
-require 'net/http'
-require 'json'
 
 module OpenTelemetry
   module Sampler
@@ -21,29 +20,31 @@ module OpenTelemetry
       DEFAULT_TARGET_POLLING_INTERVAL_SECONDS = 10
       DEFAULT_AWS_PROXY_ENDPOINT = 'http://localhost:2000'
 
-      # Wrapper class to ensure that all XRay Sampler Functionality in _AwsXRayRemoteSampler
+      # Wrapper class to ensure that all XRay Sampler Functionality in InternalAWSXRayRemoteSampler
       # uses ParentBased logic to respect the parent span's sampling decision
-      class AwsXRayRemoteSampler
-        def initialize(sampler_config)
-          @root = ParentBasedSampler.new(root: _AwsXRayRemoteSampler.new(sampler_config))
+      class AWSXRayRemoteSampler
+        def initialize(endpoint: "127.0.0.1:2000", polling_interval: DEFAULT_RULES_POLLING_INTERVAL_SECONDS, resource: OpenTelemetry::SDK::Resources::Resource.create)
+          @root = OpenTelemetry::SDK::Trace::Samplers.parent_based(
+            root: OpenTelemetry::Sampler::XRay::InternalAWSXRayRemoteSampler.new(endpoint: endpoint, polling_interval: polling_interval, resource: resource)
+          )
         end
 
-        def should_sample(context, trace_id, span_name, span_kind, attributes, links)
-          @root.should_sample(context, trace_id, span_name, span_kind, attributes, links)
+        def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
+          @root.should_sample?(
+            trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+          )
         end
 
-        def to_s
-          "AwsXRayRemoteSampler{root=#{@root}}"
+        def description
+          "AWSXRayRemoteSampler{root=#{@root.description}}"
         end
       end
 
 
-
-      # _AwsXRayRemoteSampler contains all core XRay Sampler Functionality,
+      # InternalAWSXRayRemoteSampler contains all core XRay Sampler Functionality,
       # however it is NOT Parent-based (e.g. Sample logic runs for each span)
-      class InternalAwsXRayRemoteSampler
+      class InternalAWSXRayRemoteSampler
         def initialize(endpoint: "127.0.0.1:2000", polling_interval: DEFAULT_RULES_POLLING_INTERVAL_SECONDS, resource: OpenTelemetry::SDK::Resources::Resource.create)
-
           if polling_interval.nil? || polling_interval < 10
             OpenTelemetry.logger.warn(
               "'polling_interval' is undefined or too small. Defaulting to #{DEFAULT_RULES_POLLING_INTERVAL_SECONDS} seconds"
@@ -98,8 +99,8 @@ module OpenTelemetry
           )
         end
 
-        def to_s
-          "_AwsXRayRemoteSampler{aws_proxy_endpoint=#{@aws_proxy_endpoint}, rule_polling_interval_millis=#{@rule_polling_interval_millis}}"
+        def description
+          "InternalAWSXRayRemoteSampler{aws_proxy_endpoint=#{@aws_proxy_endpoint}, rule_polling_interval_millis=#{@rule_polling_interval_millis}}"
         end
 
         private

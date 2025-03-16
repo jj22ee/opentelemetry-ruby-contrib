@@ -11,13 +11,13 @@ DATA_DIR_SAMPLING_RULES = File.join(__dir__, 'data/test-remote-sampler_sampling-
 DATA_DIR_SAMPLING_TARGETS = File.join(__dir__, 'data/test-remote-sampler_sampling-targets-response-sample.json')
 TEST_URL = 'http://localhost:2000'
 
-RSpec.describe AwsXrayRemoteSampler do
+OpenTelemetry::Sampler::XRay::SamplingRule AWSXRayRemoteSampler do
   before do
     OpenTelemetry.logger = Logger.new(STDOUT)
   end
 
   it 'creates remote sampler with empty resource' do
-    sampler = AwsXrayRemoteSampler.new(resource: Resource.empty)
+    sampler = AWSXRayRemoteSampler.new(resource: Resource.empty)
 
     expect(sampler.instance_variable_get(:@rule_poller)).not_to be_nil
     expect(sampler.instance_variable_get(:@rule_polling_interval_millis)).to eq(300 * 1000)
@@ -31,7 +31,7 @@ RSpec.describe AwsXrayRemoteSampler do
       OpenTelemetry::SemanticConventions::Resource::SERVICE_NAME => 'test-service-name',
       OpenTelemetry::SemanticConventions::Resource::CLOUD_PLATFORM => 'test-cloud-platform'
     )
-    sampler = AwsXrayRemoteSampler.new(resource: resource)
+    sampler = AWSXRayRemoteSampler.new(resource: resource)
 
     expect(sampler.instance_variable_get(:@rule_poller)).not_to be_nil
     expect(sampler.instance_variable_get(:@rule_polling_interval_millis)).to eq(300 * 1000)
@@ -46,7 +46,7 @@ RSpec.describe AwsXrayRemoteSampler do
       OpenTelemetry::SemanticConventions::Resource::SERVICE_NAME => 'test-service-name',
       OpenTelemetry::SemanticConventions::Resource::CLOUD_PLATFORM => 'test-cloud-platform'
     )
-    sampler = AwsXrayRemoteSampler.new(
+    sampler = AWSXRayRemoteSampler.new(
       resource: resource,
       endpoint: 'http://abc.com',
       polling_interval: 120
@@ -72,7 +72,7 @@ RSpec.describe AwsXrayRemoteSampler do
       OpenTelemetry::SemanticConventions::Resource::CLOUD_PLATFORM => 'test-cloud-platform'
     )
 
-    sampler = AwsXrayRemoteSampler.new(resource: resource)
+    sampler = AWSXRayRemoteSampler.new(resource: resource)
 
     # Test implementation would continue here with similar logic to TypeScript
     # Including timing-based tests and sampling decision verifications
@@ -81,13 +81,13 @@ RSpec.describe AwsXrayRemoteSampler do
   # Additional tests would follow similar pattern...
 
   it 'generates valid client id' do
-    client_id = AwsXrayRemoteSampler.generate_client_id
+    client_id = AWSXRayRemoteSampler.generate_client_id
     expect(client_id).to match(/[0-9a-z]{24}/)
   end
 
   it 'converts to string' do
-    sampler = AwsXrayRemoteSampler.new(resource: Resource.empty)
-    expected_string = 'AwsXRayRemoteSampler{root=ParentBased{root=_AwsXRayRemoteSampler{awsProxyEndpoint=http://localhost:2000, rulePollingIntervalMillis=300000}}'
+    sampler = AWSXRayRemoteSampler.new(resource: Resource.empty)
+    expected_string = 'AWSXRayRemoteSampler{root=ParentBased{root=InternalAWSXRayRemoteSampler{awsProxyEndpoint=http://localhost:2000, rulePollingIntervalMillis=300000}}'
     expect(sampler.to_s).to eq(expected_string)
   end
 end
