@@ -124,8 +124,6 @@ class SamplingRuleApplier
 
     now = Time.now
     reservoir_expired = now >= @reservoir_expiry_time
-    # puts "#{now} >= #{@reservoir_expiry_time}"
-    # puts "#{now >= @reservoir_expiry_time}"
 
     unless reservoir_expired
       result = @reservoir_sampler.should_sample?(
@@ -160,12 +158,9 @@ class SamplingRuleApplier
   private
 
   def apply_target(target)
-    puts "hello"
     @borrowing_enabled = false
 
     if target["ReservoirQuota"]
-      puts target["ReservoirQuota"]
-      puts target["RuleName"]
       @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target["ReservoirQuota"])
     end
 

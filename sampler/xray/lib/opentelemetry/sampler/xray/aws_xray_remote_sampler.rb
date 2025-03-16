@@ -47,14 +47,6 @@ end
 # however it is NOT Parent-based (e.g. Sample logic runs for each span)
 class InternalAwsXRayRemoteSampler
   def initialize(endpoint: "127.0.0.1:2000", polling_interval: DEFAULT_RULES_POLLING_INTERVAL_SECONDS, resource: OpenTelemetry::SDK::Resources::Resource.create)
-    # puts "HIIIIIIIIIIIIII"
-    # puts "#{endpoint} , #{polling_interval}"
-    OpenTelemetry.logger.error("TESTING123123123")
-    OpenTelemetry.logger.error("TESTING123123")
-    OpenTelemetry.logger.error("TESTING123")
-    OpenTelemetry.logger.error("TESTING")
-
-    # @sampler_diag = diag
 
     if polling_interval.nil? || polling_interval < 10
       OpenTelemetry.logger.warn(
@@ -97,8 +89,6 @@ class InternalAwsXRayRemoteSampler
 
     matched_rule = @rule_cache.get_matched_rule(attributes)
     if matched_rule
-      # puts "should?"
-      # puts matched_rule.sampling_rule.rule_name
       return matched_rule.should_sample?(
         trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
       )
@@ -123,7 +113,6 @@ class InternalAwsXRayRemoteSampler
     sampling_rules_response = @sampling_client.fetch_sampling_rules
     if sampling_rules_response && sampling_rules_response.body && sampling_rules_response.body != ""
       rules = JSON.parse(sampling_rules_response.body)
-      # puts rules["SamplingRuleRecords"]
       update_sampling_rules(rules)
     else
       OpenTelemetry.logger.error('GetSamplingRules Response is falsy')
@@ -140,7 +129,6 @@ class InternalAwsXRayRemoteSampler
         sampling_rules_response = @sampling_client.fetch_sampling_rules
         if sampling_rules_response && sampling_rules_response.body && sampling_rules_response.body != ""
           rules = JSON.parse(sampling_rules_response.body)
-          # puts rules["SamplingRuleRecords"]
           update_sampling_rules(rules)
         else
           OpenTelemetry.logger.error('GetSamplingRules Response is falsy')
@@ -152,7 +140,6 @@ class InternalAwsXRayRemoteSampler
   def start_sampling_targets_poller
     @target_poller = Thread.new do
       loop do
-        puts "target sleep for #{(@target_polling_interval*1000 + @target_polling_jitter_millis) / 1000.0}"
         sleep((@target_polling_interval*1000 + @target_polling_jitter_millis) / 1000.0)
         # get_and_update_sampling_targets
 
@@ -160,12 +147,9 @@ class InternalAwsXRayRemoteSampler
           SamplingStatisticsDocuments: @rule_cache.create_sampling_statistics_documents(@client_id)
         }
 
-        # puts request_body.to_json
-
         sampling_targets_response = @sampling_client.fetch_sampling_targets(request_body)
         if sampling_targets_response && sampling_targets_response.body && sampling_targets_response.body != ""
           response_body = JSON.parse(sampling_targets_response.body)
-          # puts response_body
           update_sampling_targets(response_body)
         else
           OpenTelemetry.logger.debug('SamplingTargets Response is falsy')
@@ -203,7 +187,6 @@ class InternalAwsXRayRemoteSampler
           response_object["LastRuleModification"]
         )
 
-        # puts "polling interval: #{next_polling_interval}"
         @target_polling_interval = next_polling_interval
 
         if refresh_sampling_rules
@@ -216,7 +199,6 @@ class InternalAwsXRayRemoteSampler
       end
     rescue StandardError => e
       OpenTelemetry.logger.debug("Error occurred when updating Sampling Targets: #{e}")
-      raise e
     end
   end
 

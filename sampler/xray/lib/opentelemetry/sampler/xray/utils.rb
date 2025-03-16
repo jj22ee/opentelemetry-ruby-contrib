@@ -37,7 +37,6 @@ def wildcard_match(pattern = nil, text = nil)
 
   unless match
     # Assuming a logging mechanism exists
-    # puts "WildcardMatch: no match found for #{text} against pattern #{pattern}"
   end
 
   match

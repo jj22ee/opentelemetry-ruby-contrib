@@ -84,7 +84,6 @@ class RuleCache
     min_polling_interval = nil
     next_polling_interval = DEFAULT_TARGET_POLLING_INTERVAL_SECONDS
 
-    puts "uhM??"
 
     @cache_lock.synchronize {
       @rule_appliers.each_with_index do |rule, index|
