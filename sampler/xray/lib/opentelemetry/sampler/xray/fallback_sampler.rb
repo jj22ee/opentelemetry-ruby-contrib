@@ -26,8 +26,8 @@ module OpenTelemetry
           @fixed_rate_sampler.should_sample?(trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes)
         end
 
-        def to_s
-          'FallbackSampler{fallback sampling with sampling config of 1 req/sec and 5% of additional requests'
+        def description
+          'FallbackSampler{fallback sampling with sampling config of 1 req/sec and 5% of additional requests}'
         end
       end
     end

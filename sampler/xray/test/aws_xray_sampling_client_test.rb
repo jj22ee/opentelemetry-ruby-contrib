@@ -2,58 +2,51 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-require 'minitest/autorun'
-require 'webmock/minitest'
+require 'test_helper'
 require 'json'
-require_relative '../../lib/sampler/aws_xray_sampling_client'
-require_relative '../../lib/logger/diag_console_logger'
 
-class TestAwsXraySamplingClient < Minitest::Test
+describe OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient do
   DATA_DIR = File.join(__dir__, 'data')
-  TEST_URL = 'http://127.0.0.1:2000'
+  TEST_URL = '127.0.0.1:2000'
 
-  def setup
-    @logger = DiagConsoleLogger.new
-  end
-
-  def test_get_no_sampling_rules
+  it 'test_get_no_sampling_rules' do
     stub_request(:post, "#{TEST_URL}/GetSamplingRules")
       .to_return(status: 200, body: { SamplingRuleRecords: [] }.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_rules do |response|
       assert_equal 0, response[:SamplingRuleRecords]&.length
     end
   end
 
-  def test_get_invalid_response
+  it 'test_get_invalid_response' do
     stub_request(:post, "#{TEST_URL}/GetSamplingRules")
       .to_return(status: 200, body: {}.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_rules do |response|
       assert_nil response[:SamplingRuleRecords]&.length
     end
   end
 
-  def test_get_sampling_rule_missing_in_records
+  it 'test_get_sampling_rule_missing_in_records' do
     stub_request(:post, "#{TEST_URL}/GetSamplingRules")
       .to_return(status: 200, body: { SamplingRuleRecords: [{}] }.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_rules do |response|
       assert_equal 1, response[:SamplingRuleRecords]&.length
     end
   end
 
-  def test_default_values_used_when_missing_properties_in_sampling_rule
+  it 'test_default_values_used_when_missing_properties_in_sampling_rule' do
     stub_request(:post, "#{TEST_URL}/GetSamplingRules")
       .to_return(status: 200, body: { SamplingRuleRecords: [{ SamplingRule: {} }] }.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_rules do |response|
       assert_equal 1, response[:SamplingRuleRecords]&.length
@@ -75,14 +68,14 @@ class TestAwsXraySamplingClient < Minitest::Test
     end
   end
 
-  def test_get_correct_number_of_sampling_rules
+  it 'test_get_correct_number_of_sampling_rules' do
     data = JSON.parse(File.read("#{DATA_DIR}/get-sampling-rules-response-sample.json"))
     records = data['SamplingRuleRecords']
 
     stub_request(:post, "#{TEST_URL}/GetSamplingRules")
       .to_return(status: 200, body: data.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_rules do |response|
       assert_equal records.length, response[:SamplingRuleRecords]&.length
@@ -108,13 +101,13 @@ class TestAwsXraySamplingClient < Minitest::Test
     end
   end
 
-  def test_get_sampling_targets
+  it 'test_get_sampling_targets' do
     data = JSON.parse(File.read("#{DATA_DIR}/get-sampling-targets-response-sample.json"))
 
     stub_request(:post, "#{TEST_URL}/SamplingTargets")
       .to_return(status: 200, body: data.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_targets(data) do |response|
       assert_equal 2, response[:SamplingTargetDocuments].length
@@ -123,7 +116,7 @@ class TestAwsXraySamplingClient < Minitest::Test
     end
   end
 
-  def test_get_invalid_sampling_targets
+  it 'test_get_invalid_sampling_targets' do
     data = {
       LastRuleModification: nil,
       SamplingTargetDocuments: nil,
@@ -133,7 +126,7 @@ class TestAwsXraySamplingClient < Minitest::Test
     stub_request(:post, "#{TEST_URL}/SamplingTargets")
       .to_return(status: 200, body: data.to_json)
 
-    client = AwsXraySamplingClient.new(TEST_URL, @logger)
+    client = OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient.new(TEST_URL)
 
     client.fetch_sampling_targets(data) do |response|
       assert_nil response[:SamplingTargetDocuments]
@@ -142,27 +135,3 @@ class TestAwsXraySamplingClient < Minitest::Test
     end
   end
 end
-
-
-=begin
-
-Key changes made in the conversion:
-
-    Used Ruby's MiniTest framework instead of Jest
-    Replaced nock with webmock for HTTP request stubbing
-    Changed expect() assertions to MiniTest assertions
-    Converted camelCase to snake_case for Ruby conventions
-    Used Ruby symbols instead of JavaScript object properties where appropriate
-    Replaced TypeScript type annotations with Ruby's implicit typing
-    Used Ruby's block syntax instead of JavaScript callbacks
-    Used Ruby's file handling for reading JSON files
-    Implemented proper Ruby class structure with setup method
-    Used Ruby's string interpolation instead of JavaScript string concatenation
-
-Note: This conversion assumes the existence of corresponding Ruby implementations of the AWS X-Ray sampling client and related classes. You'll need to ensure those implementations exist and match the expected interface.
-
-
-
-
-
-=end

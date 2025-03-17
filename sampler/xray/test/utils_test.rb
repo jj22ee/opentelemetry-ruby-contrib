@@ -2,10 +2,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-require 'minitest/autorun'
-require_relative '../../src/sampler/utils'
+require 'test_helper'
 
-class TestSamplingUtils < Minitest::Test
+describe OpenTelemetry::Sampler::XRay::Utils do
   POSITIVE_TESTS = [
     ['*', ''],
     ['foo', 'foo'],
@@ -24,7 +23,7 @@ class TestSamplingUtils < Minitest::Test
     ['a*a', 'aa'],
     ['a*a', 'aba'],
     ['a*a*', 'aaaaaaaaaaaaaaaaaaaaaaa'],
-    ['a*b*a*b*a*b*a*b*a*', '**********************byiaahkjbjhbuykj**********************aa**********************b'],
+    ['a*b*a*b*a*b*a*b*a*', 'akljd9gsdfbkjhaabajkhbbyiaahkjbjhbuykjakjhabkjhbabjhkaabbabbaaakljdfsjklababkjbsdabab'],
     ['a*na*ha', 'anananahahanahanaha'],
     ['***a', 'a'],
     ['**a**', 'a'],
@@ -71,60 +70,63 @@ class TestSamplingUtils < Minitest::Test
     ['*s', 'horse']
   ]
 
-  def test_wildcard_match_with_only_wildcard
-    assert Utils.wildcard_match('*', nil)
+  it 'test_wildcard_match_with_only_wildcard' do
+    assert OpenTelemetry::Sampler::XRay::Utils.wildcard_match('*', nil)
   end
 
-  def test_wildcard_match_with_undefined_pattern
-    refute Utils.wildcard_match(nil, '')
+  it 'test_wildcard_match_with_undefined_pattern' do
+    refute OpenTelemetry::Sampler::XRay::Utils.wildcard_match(nil, '')
   end
 
-  def test_wildcard_match_with_empty_pattern_and_text
-    assert Utils.wildcard_match('', '')
+  it 'test_wildcard_match_with_empty_pattern_and_text' do
+    assert OpenTelemetry::Sampler::XRay::Utils.wildcard_match('', '')
   end
 
-  def test_wildcard_match_with_regex_success
+  it 'test_wildcard_match_with_regex_success' do
     POSITIVE_TESTS.each do |test|
-      assert Utils.wildcard_match(test[0], test[1])
+      if !OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
+        puts "#{test[0]} --- #{test[1]}"
+      end
+      assert OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
     end
   end
 
-  def test_wildcard_match_with_regex_failure
+  it 'test_wildcard_match_with_regex_failure' do
     NEGATIVE_TESTS.each do |test|
-      refute Utils.wildcard_match(test[0], test[1])
+      refute OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
     end
   end
 
-  def test_attribute_match_with_undefined_attributes
+  it 'test_attribute_match_with_undefined_attributes' do
     rule_attributes = { 'string' => 'string', 'string2' => 'string2' }
-    refute Utils.attribute_match(nil, rule_attributes)
-    refute Utils.attribute_match({}, rule_attributes)
-    refute Utils.attribute_match({ 'string' => 'string' }, rule_attributes)
+    refute OpenTelemetry::Sampler::XRay::Utils.attribute_match(nil, rule_attributes)
+    refute OpenTelemetry::Sampler::XRay::Utils.attribute_match({}, rule_attributes)
+    refute OpenTelemetry::Sampler::XRay::Utils.attribute_match({ 'string' => 'string' }, rule_attributes)
   end
 
-  def test_attribute_match_with_undefined_rule_attributes
+  it 'test_attribute_match_with_undefined_rule_attributes' do
     attr = {
       'number' => 1,
       'string' => 'string',
       'undefined' => nil,
       'boolean' => true
     }
-    assert Utils.attribute_match(attr, nil)
+    assert OpenTelemetry::Sampler::XRay::Utils.attribute_match(attr, nil)
   end
 
-  def test_attribute_match_successful_match
+  it 'test_attribute_match_successful_match' do
     attr = { 'language' => 'english' }
     rule_attribute = { 'language' => 'en*sh' }
-    assert Utils.attribute_match(attr, rule_attribute)
+    assert OpenTelemetry::Sampler::XRay::Utils.attribute_match(attr, rule_attribute)
   end
 
-  def test_attribute_match_failed_match
+  it 'test_attribute_match_failed_match' do
     attr = { 'language' => 'french' }
     rule_attribute = { 'language' => 'en*sh' }
-    refute Utils.attribute_match(attr, rule_attribute)
+    refute OpenTelemetry::Sampler::XRay::Utils.attribute_match(attr, rule_attribute)
   end
 
-  def test_attribute_match_extra_attributes_success
+  it 'test_attribute_match_extra_attributes_success' do
     attr = {
       'number' => 1,
       'string' => 'string',
@@ -132,10 +134,10 @@ class TestSamplingUtils < Minitest::Test
       'boolean' => true
     }
     rule_attribute = { 'string' => 'string' }
-    assert Utils.attribute_match(attr, rule_attribute)
+    assert OpenTelemetry::Sampler::XRay::Utils.attribute_match(attr, rule_attribute)
   end
 
-  def test_attribute_match_extra_attributes_failure
+  it 'test_attribute_match_extra_attributes_failure' do
     attr = {
       'number' => 1,
       'string' => 'string',
@@ -143,29 +145,6 @@ class TestSamplingUtils < Minitest::Test
       'boolean' => true
     }
     rule_attribute = { 'string' => 'string', 'number' => '1' }
-    refute Utils.attribute_match(attr, rule_attribute)
+    refute OpenTelemetry::Sampler::XRay::Utils.attribute_match(attr, rule_attribute)
   end
 end
-
-
-
-=begin
-
-
-
-
-Key changes made in the conversion:
-
-    Used Ruby's MiniTest framework instead of Jest
-    Changed describe blocks to a single test class inheriting from Minitest::Test
-    Renamed test methods to follow Ruby convention (snake_case)
-    Changed expect().toEqual() to assert and refute
-    Converted JavaScript objects to Ruby hashes
-    Used string keys in hashes instead of symbols to match the JavaScript behavior
-    Changed undefined to nil
-    Moved the test arrays to constants
-    Used require_relative for importing the Utils module
-
-Note that this assumes the existence of a corresponding Ruby implementation of the Utils module with wildcard_match and attribute_match methods.
-
-=end

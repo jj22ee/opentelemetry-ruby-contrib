@@ -2,13 +2,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-require 'minitest/autorun'
-require 'timecop'
-require_relative '../../src/sampler/rule_cache'
-require_relative '../../src/sampler/sampling_rule'
-require_relative '../../src/sampler/sampling_rule_applier'
+require 'test_helper'
 
-class RuleCacheTest < Minitest::Test
+describe OpenTelemetry::Sampler::XRay::RuleCache do
   def create_rule(name, priority, reservoir_size, fixed_rate)
     test_sampling_rule = {
       'RuleName' => name,
@@ -23,13 +19,13 @@ class RuleCacheTest < Minitest::Test
       'ResourceARN' => '*',
       'Version' => 1
     }
-    SamplingRuleApplier.new(SamplingRule.new(test_sampling_rule))
+    OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(OpenTelemetry::Sampler::XRay::SamplingRule.new(test_sampling_rule))
   end
 
-  def test_cache_updates_and_sorts_rules
+  it 'test_cache_updates_and_sorts_rules' do
     # Set up default rule in rule cache
     default_rule = create_rule('Default', 10000, 1, 0.05)
-    cache = RuleCache.new(Resource.new({}))
+    cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     cache.update_rules([default_rule])
 
     # Expect default rule to exist
@@ -56,10 +52,10 @@ class RuleCacheTest < Minitest::Test
     assert_equal 'low', rule_appliers[5].sampling_rule.rule_name
   end
 
-  def test_rule_cache_expiration_logic
+  it 'test_rule_cache_expiration_logic' do
     Timecop.freeze(Time.now) do
       default_rule = create_rule('Default', 10000, 1, 0.05)
-      cache = RuleCache.new(Resource.new({}))
+      cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
       cache.update_rules([default_rule])
 
       Timecop.travel(2 * 60 * 60) # Travel 2 hours into the future
@@ -67,8 +63,8 @@ class RuleCacheTest < Minitest::Test
     end
   end
 
-  def test_update_cache_with_only_one_rule_changed
-    cache = RuleCache.new(Resource.new({}))
+  it 'test_update_cache_with_only_one_rule_changed' do
+    cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     rule1 = create_rule('rule_1', 1, 0, 0.0)
     rule2 = create_rule('rule_2', 10, 0, 0.0)
     rule3 = create_rule('rule_3', 100, 0, 0.0)
@@ -92,8 +88,8 @@ class RuleCacheTest < Minitest::Test
     refute_equal rule_appliers_copy[2], current_appliers[1]
   end
 
-  def test_update_rules_removes_older_rule
-    cache = RuleCache.new(Resource.new({}))
+  it 'test_update_rules_removes_older_rule' do
+    cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     assert_equal 0, cache.instance_variable_get(:@rule_appliers).length
 
     rule1 = create_rule('first_rule', 200, 0, 0.0)
@@ -111,10 +107,10 @@ class RuleCacheTest < Minitest::Test
     assert_equal 'second_rule', rule_appliers[0].sampling_rule.rule_name
   end
 
-  def test_update_sampling_targets
+  it 'test_update_sampling_targets' do
     rule1 = create_rule('default', 10000, 1, 0.05)
     rule2 = create_rule('test', 20, 10, 0.2)
-    cache = RuleCache.new(Resource.new({}))
+    cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     cache.update_rules([rule1, rule2])
 
     time = Time.now.to_i
@@ -157,12 +153,12 @@ class RuleCacheTest < Minitest::Test
     assert refresh_sampling_rules_after
   end
 
-  def test_get_all_statistics
+  it 'test_get_all_statistics' do
     Timecop.freeze(Time.now) do
       rule1 = create_rule('test', 4, 2, 2.0)
       rule2 = create_rule('default', 5, 5, 5.0)
 
-      cache = RuleCache.new(Resource::EMPTY)
+      cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create)
       cache.update_rules([rule1, rule2])
 
       Timecop.travel(0.001) # Travel 1ms into the future
@@ -172,20 +168,20 @@ class RuleCacheTest < Minitest::Test
 
       expected_statistics = [
         {
-          'ClientID' => client_id,
-          'RuleName' => 'test',
-          'Timestamp' => Time.now.to_i,
-          'RequestCount' => 0,
-          'BorrowCount' => 0,
-          'SampledCount' => 0
+          ClientID: client_id,
+          RuleName: 'test',
+          Timestamp: Time.now.to_i,
+          RequestCount: 0,
+          BorrowCount: 0,
+          SampledCount: 0
         },
         {
-          'ClientID' => client_id,
-          'RuleName' => 'default',
-          'Timestamp' => Time.now.to_i,
-          'RequestCount' => 0,
-          'BorrowCount' => 0,
-          'SampledCount' => 0
+          ClientID: client_id,
+          RuleName: 'default',
+          Timestamp: Time.now.to_i,
+          RequestCount: 0,
+          BorrowCount: 0,
+          SampledCount: 0
         }
       ]
 
@@ -193,43 +189,3 @@ class RuleCacheTest < Minitest::Test
     end
   end
 end
-
-
-=begin
-
-
-This conversion makes several assumptions:
-
-    The Ruby classes (RuleCache, SamplingRule, etc.)c.) have similar interfaces to their TypeScript counterparts
-    The Ruby implementation uses instance variables with similar names (e.g., @rule_appliers instead of ruleAppliers)
-    The Ruby classes follow Ruby naming conventions (snake_case instead of camelCase)
-    The Resource class exists with similar functionality
-    We're using Timecop for time manipulation instead of Sinon's fake timers
-
-You'll need to:
-
-    Install required gems:
-
-
-gem install minitest
-gem install timecop
-
-
-
-    Ensure your Ruby implementation of the classes matches the expected interface
-    Adjust the relative paths to match your project structure
-    Modify assertions if the actual implementation details differ
-
-The main differences from the TypeScript version are:
-
-    Using Ruby's built-in Minitest framework instead of Jest
-    Using Timecop for time manipulation
-    Using Ruby's naming conventions
-    Using Ruby's hash syntax
-    Using Ruby's assertion methods
-    Using Ruby's class and method definitions
-
-
-
-
-=end
