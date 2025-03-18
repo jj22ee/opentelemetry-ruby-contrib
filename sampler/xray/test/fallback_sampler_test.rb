@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -24,7 +26,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     # 0 seconds passed, 0 quota available
     sampled = 0
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -34,7 +37,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 0.4)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -44,7 +48,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 0.8)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -54,7 +59,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 1.2)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -64,7 +70,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 1.6)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -74,7 +81,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 2.0)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -84,7 +92,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 2.4)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end
@@ -94,7 +103,8 @@ describe OpenTelemetry::Sampler::XRay::FallbackSampler do
     sampled = 0
     Timecop.freeze(@current_time + 100)
     30.times do
-      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+      if sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {},
+                                links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
         sampled += 1
       end
     end

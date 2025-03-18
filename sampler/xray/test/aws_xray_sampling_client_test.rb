@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -50,7 +52,7 @@ describe OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient do
 
     client.fetch_sampling_rules do |response|
       assert_equal 1, response[:SamplingRuleRecords]&.length
-      rule = response[:SamplingRuleRecords]&.first[:SamplingRule]
+      rule = response[:SamplingRuleRecords]&.first&.[](:SamplingRule)
       refute_nil rule
       assert_nil rule[:Attributes]
       assert_nil rule[:FixedRate]
@@ -79,11 +81,11 @@ describe OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient do
 
     client.fetch_sampling_rules do |response|
       assert_equal records.length, response[:SamplingRuleRecords]&.length
-      
+
       records.each_with_index do |record, i|
         response_rule = response[:SamplingRuleRecords][i][:SamplingRule]
         record_rule = record['SamplingRule']
-        
+
         assert_equal record_rule['Attributes'], response_rule[:Attributes]
         assert_equal record_rule['FixedRate'], response_rule[:FixedRate]
         assert_equal record_rule['HTTPMethod'], response_rule[:HTTPMethod]
@@ -112,7 +114,7 @@ describe OpenTelemetry::Sampler::XRay::AWSXRaySamplingClient do
     client.fetch_sampling_targets(data) do |response|
       assert_equal 2, response[:SamplingTargetDocuments].length
       assert_equal 0, response[:UnprocessedStatistics].length
-      assert_equal 1707551387, response[:LastRuleModification]
+      assert_equal 1_707_551_387, response[:LastRuleModification]
     end
   end
 

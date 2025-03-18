@@ -7,6 +7,7 @@
 module OpenTelemetry
   module Sampler
     module XRay
+      # Statistics contains metric counters for each sampling attempt in each Sampling Rule Applier
       class Statistics
         attr_accessor :request_count, :sample_count, :borrow_count
 
@@ -16,7 +17,7 @@ module OpenTelemetry
           @borrow_count = borrow_count
         end
 
-        def get_statistics
+        def retrieve_statistics
           {
             request_count: @request_count,
             sample_count: @sample_count,

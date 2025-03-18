@@ -15,6 +15,8 @@ require_relative 'utils'
 module OpenTelemetry
   module Sampler
     module XRay
+      # SamplingRuleApplier is responsible for applying Reservoir Sampling and Probability Sampling
+      # from the Sampling Rule when determining the sampling decision for spans that matched the rule
       class SamplingRuleApplier
         attr_reader :sampling_rule
 
@@ -25,11 +27,11 @@ module OpenTelemetry
           @sampling_rule = sampling_rule
           @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(@sampling_rule.fixed_rate)
 
-          @reservoir_sampler = if @sampling_rule.reservoir_size > 0
-                                OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(1)
-                              else
-                                OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(0)
-                              end
+          @reservoir_sampler = if @sampling_rule.reservoir_size.positive?
+                                 OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(1)
+                               else
+                                 OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(0)
+                               end
 
           @reservoir_expiry_time = MAX_DATE_TIME_SECONDS
           @statistics = statistics
@@ -51,7 +53,7 @@ module OpenTelemetry
           http_method = nil
           http_host = nil
 
-          if !attributes.nil?
+          unless attributes.nil?
             http_target = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_TARGET]
             http_url = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_URL]
             http_method = attributes[OpenTelemetry::SemanticConventions::Trace::HTTP_METHOD]
@@ -82,13 +84,13 @@ module OpenTelemetry
             http_target = '/'
           end
 
-          OpenTelemetry::Sampler::XRay::Utils::attribute_match(attributes, @sampling_rule.attributes) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.host, http_host) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.http_method, http_method) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.service_name, service_name) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.url_path, http_target) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.service_type, service_type) &&
-            OpenTelemetry::Sampler::XRay::Utils::wildcard_match(@sampling_rule.resource_arn, resource_arn)
+          OpenTelemetry::Sampler::XRay::Utils.attribute_match(attributes, @sampling_rule.attributes) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.host, http_host) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.http_method, http_method) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.service_name, service_name) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.url_path, http_target) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.service_type, service_type) &&
+            OpenTelemetry::Sampler::XRay::Utils.wildcard_match(@sampling_rule.resource_arn, resource_arn)
         end
 
         def should_sample?(trace_id:, parent_context:, links:, name:, kind:, attributes:)
@@ -103,32 +105,32 @@ module OpenTelemetry
 
           unless reservoir_expired
             result = @reservoir_sampler.should_sample?(
-              trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+              trace_id: trace_id, parent_context: parent_context, links: links, name: name, kind: kind, attributes: attributes
             )
             has_borrowed = @borrowing_enabled && result.instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
           end
 
           if result.instance_variable_get(:@decision) == OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
             result = @fixed_rate_sampler.should_sample?(
-              trace_id:trace_id, parent_context:parent_context, links:links, name:name, kind:kind, attributes:attributes
+              trace_id: trace_id, parent_context: parent_context, links: links, name: name, kind: kind, attributes: attributes
             )
           end
 
-          @statistics_lock.synchronize {
-            @statistics.sample_count += result.instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 1 : 0
+          @statistics_lock.synchronize do
+            @statistics.sample_count += result.instance_variable_get(:@decision) == OpenTelemetry::SDK::Trace::Samplers::Decision::DROP ? 0 : 1
             @statistics.borrow_count += has_borrowed ? 1 : 0
             @statistics.request_count += 1
-          }
+          end
 
           result
         end
 
         def snapshot_statistics
-          @statistics_lock.synchronize {
+          @statistics_lock.synchronize do
             statistics_copy = @statistics.dup
             @statistics.reset_statistics
             return statistics_copy
-          }
+          end
         end
 
         private
@@ -136,19 +138,17 @@ module OpenTelemetry
         def apply_target(target)
           @borrowing_enabled = false
 
-          if target["ReservoirQuota"]
-            @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target["ReservoirQuota"])
-          end
+          @reservoir_sampler = OpenTelemetry::Sampler::XRay::RateLimitingSampler.new(target['ReservoirQuota']) if target['ReservoirQuota']
 
-          @reservoir_expiry_time = if target["ReservoirQuotaTTL"]
-                                    Time.at(target["ReservoirQuotaTTL"])
-                                  else
-                                    Time.now
-                                  end
+          @reservoir_expiry_time = if target['ReservoirQuotaTTL']
+                                     Time.at(target['ReservoirQuotaTTL'])
+                                   else
+                                     Time.now
+                                   end
 
-          if target["FixedRate"]
-            @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(target["FixedRate"])
-          end
+          return unless target['FixedRate']
+
+          @fixed_rate_sampler = OpenTelemetry::SDK::Trace::Samplers::TraceIdRatioBased.new(target['FixedRate'])
         end
 
         def get_arn(resource, attributes)
@@ -157,9 +157,7 @@ module OpenTelemetry
                 resource_hash[OpenTelemetry::SemanticConventions::Resource::AWS_ECS_CLUSTER_ARN] ||
                 resource_hash[OpenTelemetry::SemanticConventions::Resource::AWS_EKS_CLUSTER_ARN]
 
-          if arn.nil?
-            arn = attributes[OpenTelemetry::SemanticConventions::Trace::AWS_LAMBDA_INVOKED_ARN] || resource_hash[OpenTelemetry::SemanticConventions::Resource::FAAS_ID]
-          end
+          arn = attributes[OpenTelemetry::SemanticConventions::Trace::AWS_LAMBDA_INVOKED_ARN] || resource_hash[OpenTelemetry::SemanticConventions::Resource::FAAS_ID] if arn.nil?
           arn
         end
       end

@@ -7,10 +7,11 @@
 module OpenTelemetry
   module Sampler
     module XRay
+      # Utils contains utilities for X-Ray Sampling Rule matching logic
       module Utils
         module_function
 
-        # Note: These constants would typically come from a Ruby gem equivalent to @opentelemetry/semantic-conventions
+        # NOTE: These constants would typically come from a Ruby gem equivalent to @opentelemetry/semantic-conventions
         CLOUD_PLATFORM_MAPPING = {
           'aws_lambda' => 'AWS::Lambda::Function',
           'aws_elastic_beanstalk' => 'AWS::ElasticBeanstalk::Environment',
@@ -25,7 +26,7 @@ module OpenTelemetry
         end
 
         def convert_pattern_to_regexp(pattern)
-          escape_regexp(pattern).gsub(/\*/, '.*').gsub(/\?/, '.')
+          escape_regexp(pattern).gsub('*', '.*').tr('?', '.')
         end
 
         def wildcard_match(pattern = nil, text = nil)
@@ -46,8 +47,8 @@ module OpenTelemetry
         def attribute_match(attributes = nil, rule_attributes = nil)
           return true if rule_attributes.nil? || rule_attributes.empty?
 
-          return false if attributes.nil? || 
-                          attributes.empty? || 
+          return false if attributes.nil? ||
+                          attributes.empty? ||
                           rule_attributes.length > attributes.length
 
           matched_count = 0

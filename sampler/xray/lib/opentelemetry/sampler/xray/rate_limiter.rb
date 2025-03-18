@@ -7,7 +7,7 @@
 module OpenTelemetry
   module Sampler
     module XRay
-      # The RateLimiter keeps track of the current reservoir quota balance available (measured via available time)
+      # RateLimiter keeps track of the current reservoir quota balance available (measured via available time)
       # If enough time has elapsed, the RateLimiter will allow quota balance to be consumed/taken (decrease available time)
       # A RateLimitingSampler uses this RateLimiter to determine if it should sample or not based on the quota balance available.
       class RateLimiter
@@ -20,14 +20,14 @@ module OpenTelemetry
         end
 
         def take(cost = 1)
-          return false if @quota == 0
+          return false if @quota.zero?
 
           quota_per_millis = @quota / 1000.0
 
           # assume divide by zero not possible
           cost_in_millis = cost / quota_per_millis
 
-          @lock.synchronize {
+          @lock.synchronize do
             wallet_ceiling_millis = Time.now.to_f * 1000
             current_balance_millis = wallet_ceiling_millis - @wallet_floor_millis
             current_balance_millis = [current_balance_millis, @max_balance_millis].min
@@ -40,7 +40,7 @@ module OpenTelemetry
 
             # No changes to the wallet state
             false
-          }
+          end
         end
       end
     end

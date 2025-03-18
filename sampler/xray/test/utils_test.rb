@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -51,7 +53,7 @@ describe OpenTelemetry::Sampler::XRay::Utils do
     ['Hell?W*d', 'HelloWorld'],
     ['*.World', 'Hello.World'],
     ['*.World', 'Bye.World']
-  ]
+  ].freeze
 
   NEGATIVE_TESTS = [
     ['', 'whatever'],
@@ -68,7 +70,7 @@ describe OpenTelemetry::Sampler::XRay::Utils do
     ['*?*a', 'a'],
     ['a*na*ha', 'anananahahanahana'],
     ['*s', 'horse']
-  ]
+  ].freeze
 
   it 'test_wildcard_match_with_only_wildcard' do
     assert OpenTelemetry::Sampler::XRay::Utils.wildcard_match('*', nil)
@@ -84,9 +86,7 @@ describe OpenTelemetry::Sampler::XRay::Utils do
 
   it 'test_wildcard_match_with_regex_success' do
     POSITIVE_TESTS.each do |test|
-      if !OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
-        puts "#{test[0]} --- #{test[1]}"
-      end
+      puts "#{test[0]} --- #{test[1]}" unless OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
       assert OpenTelemetry::Sampler::XRay::Utils.wildcard_match(test[0], test[1])
     end
   end

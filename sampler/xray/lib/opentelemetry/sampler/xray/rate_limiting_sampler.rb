@@ -4,11 +4,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-require_relative './rate_limiter'
+require_relative 'rate_limiter'
 
 module OpenTelemetry
   module Sampler
     module XRay
+      # RateLimitingSampler is a Sampler that uses a RateLimiter to determine
+      # if it should sample or not based on the quota balance available.
       class RateLimitingSampler
         def initialize(quota)
           @quota = quota
@@ -19,13 +21,13 @@ module OpenTelemetry
           tracestate = OpenTelemetry::Trace.current_span(parent_context).context.tracestate
           if @reservoir.take(1)
             OpenTelemetry::SDK::Trace::Samplers::Result.new(
-              decision:  OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+              decision: OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
               tracestate: tracestate,
               attributes: attributes
             )
           else
             OpenTelemetry::SDK::Trace::Samplers::Result.new(
-              decision:  OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+              decision: OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
               tracestate: tracestate,
               attributes: attributes
             )

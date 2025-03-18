@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -24,7 +26,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
 
   it 'test_cache_updates_and_sorts_rules' do
     # Set up default rule in rule cache
-    default_rule = create_rule('Default', 10000, 1, 0.05)
+    default_rule = create_rule('Default', 10_000, 1, 0.05)
     cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     cache.update_rules([default_rule])
 
@@ -54,7 +56,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
 
   it 'test_rule_cache_expiration_logic' do
     Timecop.freeze(Time.now) do
-      default_rule = create_rule('Default', 10000, 1, 0.05)
+      default_rule = create_rule('Default', 10_000, 1, 0.05)
       cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
       cache.update_rules([default_rule])
 
@@ -108,7 +110,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
   end
 
   it 'test_update_sampling_targets' do
-    rule1 = create_rule('default', 10000, 1, 0.05)
+    rule1 = create_rule('default', 10_000, 1, 0.05)
     rule2 = create_rule('test', 20, 10, 0.2)
     cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
     cache.update_rules([rule1, rule2])
@@ -149,7 +151,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
     rule_appliers = cache.instance_variable_get(:@rule_appliers)
     assert_equal 2, rule_appliers.length
 
-    refresh_sampling_rules_after, _ = cache.update_targets(target_map, time + 1)
+    refresh_sampling_rules_after, = cache.update_targets(target_map, time + 1)
     assert refresh_sampling_rules_after
   end
 

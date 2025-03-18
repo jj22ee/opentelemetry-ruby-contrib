@@ -7,6 +7,8 @@
 module OpenTelemetry
   module Sampler
     module XRay
+      # RuleCache stores all the Sampling Rule Appliers, each corresponding
+      # to the user's Sampling Rules that were retrieved from AWS X-Ray
       class RuleCache
         # The cache expires 1 hour after the last refresh time.
         RULE_CACHE_TTL_MILLIS = 60 * 60 * 1000
@@ -32,25 +34,23 @@ module OpenTelemetry
         def update_rules(new_rule_appliers)
           old_rule_appliers_map = {}
 
-          @cache_lock.synchronize {
+          @cache_lock.synchronize do
             @rule_appliers.each do |rule|
               old_rule_appliers_map[rule.sampling_rule.rule_name] = rule
             end
 
             new_rule_appliers.each_with_index do |new_rule, index|
               rule_name_to_check = new_rule.sampling_rule.rule_name
-              if old_rule_appliers_map.key?(rule_name_to_check)
-                old_rule = old_rule_appliers_map[rule_name_to_check]
-                if new_rule.sampling_rule.equals?(old_rule.sampling_rule)
-                  new_rule_appliers[index] = old_rule
-                end
-              end
+              next unless old_rule_appliers_map.key?(rule_name_to_check)
+
+              old_rule = old_rule_appliers_map[rule_name_to_check]
+              new_rule_appliers[index] = old_rule if new_rule.sampling_rule.equals?(old_rule.sampling_rule)
             end
 
             @rule_appliers = new_rule_appliers
             sort_rules_by_priority
             @last_updated_epoch_millis = Time.now.to_i * 1000
-          }
+          end
         end
 
         def create_sampling_statistics_documents(client_id)
@@ -80,17 +80,12 @@ module OpenTelemetry
           min_polling_interval = nil
           next_polling_interval = DEFAULT_TARGET_POLLING_INTERVAL_SECONDS
 
-
-          @cache_lock.synchronize {
+          @cache_lock.synchronize do
             @rule_appliers.each_with_index do |rule, index|
               target = target_documents[rule.sampling_rule.rule_name]
               if target
                 @rule_appliers[index] = rule.with_target(target)
-                if target["Interval"]
-                  if min_polling_interval.nil? || min_polling_interval > target["Interval"]
-                    min_polling_interval = target["Interval"]
-                  end
-                end
+                min_polling_interval = target['Interval'] if target['Interval'] && (min_polling_interval.nil? || min_polling_interval > target['Interval'])
               else
                 OpenTelemetry.logger.debug('Invalid sampling target: missing rule name')
               end
@@ -100,7 +95,7 @@ module OpenTelemetry
 
             refresh_sampling_rules = last_rule_modification * 1000 > @last_updated_epoch_millis
             return [refresh_sampling_rules, next_polling_interval]
-          }
+          end
         end
 
         private

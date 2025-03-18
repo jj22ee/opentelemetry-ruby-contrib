@@ -7,6 +7,8 @@
 module OpenTelemetry
   module Sampler
     module XRay
+      # SamplingRule represent a Sampling Rule object for AWS X-Ray
+      # See: https://docs.aws.amazon.com/xray/latest/api/API_SamplingRule.html
       class SamplingRule
         attr_accessor :rule_name, :rule_arn, :priority, :reservoir_size, :fixed_rate,
                       :service_name, :service_type, :host, :http_method, :url_path,
@@ -16,28 +18,27 @@ module OpenTelemetry
           # The AWS API docs mark `rule_name` as an optional field but in practice it seems to always be
           # present, and sampling targets could not be computed without it. For now provide an arbitrary fallback just in
           # case the AWS API docs are correct.
-          @rule_name = sampling_rule["RuleName"] || 'Default'
-          @rule_arn = sampling_rule["RuleARN"]
-          @priority = sampling_rule["Priority"]
-          @reservoir_size = sampling_rule["ReservoirSize"]
-          @fixed_rate = sampling_rule["FixedRate"]
-          @service_name = sampling_rule["ServiceName"]
-          @service_type = sampling_rule["ServiceType"]
-          @host = sampling_rule["Host"]
-          @http_method = sampling_rule["HTTPMethod"]
-          @url_path = sampling_rule["URLPath"]
-          @resource_arn = sampling_rule["ResourceARN"]
-          @version = sampling_rule["Version"]
-          @attributes = sampling_rule["Attributes"]
-
+          @rule_name = sampling_rule['RuleName'] || 'Default'
+          @rule_arn = sampling_rule['RuleARN']
+          @priority = sampling_rule['Priority']
+          @reservoir_size = sampling_rule['ReservoirSize']
+          @fixed_rate = sampling_rule['FixedRate']
+          @service_name = sampling_rule['ServiceName']
+          @service_type = sampling_rule['ServiceType']
+          @host = sampling_rule['Host']
+          @http_method = sampling_rule['HTTPMethod']
+          @url_path = sampling_rule['URLPath']
+          @resource_arn = sampling_rule['ResourceARN']
+          @version = sampling_rule['Version']
+          @attributes = sampling_rule['Attributes']
         end
 
         def equals?(other)
           attributes_equals = if @attributes.nil? || other.attributes.nil?
-                              @attributes == other.attributes
-                            else
-                              attributes_equal?(other.attributes)
-                            end
+                                @attributes == other.attributes
+                              else
+                                attributes_equal?(other.attributes)
+                              end
 
           @fixed_rate == other.fixed_rate &&
             @http_method == other.http_method &&

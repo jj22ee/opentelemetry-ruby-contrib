@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Copyright OpenTelemetry Authors
 #
@@ -22,14 +23,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     100.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 0, sampled
 
@@ -37,14 +38,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     100.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 15, sampled
 
@@ -52,14 +53,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     100.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 30, sampled
 
@@ -67,14 +68,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     100.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 30, sampled
 
@@ -82,14 +83,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     100.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 30, sampled
   end
@@ -99,14 +100,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     50.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 0, sampled
 
@@ -114,14 +115,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     50.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 0, sampled
 
@@ -129,14 +130,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     50.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 1, sampled
 
@@ -144,14 +145,14 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
 
     sampled = 0
     50.times do
-      if sampler.should_sample?(parent_context: nil, 
-                             trace_id: '3759e988bd862e3fe1be46a994272793', 
-                             name: 'name', 
-                             kind: OpenTelemetry::Trace::SpanKind::SERVER, 
-                             attributes: {}, 
-                             links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
-        sampled += 1
-      end
+      next unless sampler.should_sample?(parent_context: nil,
+                                         trace_id: '3759e988bd862e3fe1be46a994272793',
+                                         name: 'name',
+                                         kind: OpenTelemetry::Trace::SpanKind::SERVER,
+                                         attributes: {},
+                                         links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
+
+      sampled += 1
     end
     assert_equal 1, sampled
   end

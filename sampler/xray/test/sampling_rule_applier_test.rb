@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
-
 
 require 'test_helper'
 require 'json'
@@ -17,9 +18,9 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
     sampling_rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(default_rule)
 
     resource = OpenTelemetry::SDK::Resources::Resource.create({
-      'service.name' => 'test_service_name',
-      'cloud.platform' => 'test_cloud_platform'
-    })
+                                                                'service.name' => 'test_service_name',
+                                                                'cloud.platform' => 'test_cloud_platform'
+                                                              })
 
     attr = {
       'http.target' => '/target',
@@ -35,20 +36,20 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
 
   it 'test_applier_matches_with_all_attributes' do
     rule = OpenTelemetry::Sampler::XRay::SamplingRule.new({
-      'Attributes' => { 'abc' => '123', 'def' => '4?6', 'ghi' => '*89' },
-      'FixedRate' => 0.11,
-      'HTTPMethod' => 'GET',
-      'Host' => 'localhost',
-      'Priority' => 20,
-      'ReservoirSize' => 1,
-      'ResourceARN' => 'arn:aws:lambda:us-west-2:123456789012:function:my-function',
-      'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
-      'RuleName' => 'test',
-      'ServiceName' => 'myServiceName',
-      'ServiceType' => 'AWS::Lambda::Function',
-      'URLPath' => '/helloworld',
-      'Version' => 1
-    })
+                                                            'Attributes' => { 'abc' => '123', 'def' => '4?6', 'ghi' => '*89' },
+                                                            'FixedRate' => 0.11,
+                                                            'HTTPMethod' => 'GET',
+                                                            'Host' => 'localhost',
+                                                            'Priority' => 20,
+                                                            'ReservoirSize' => 1,
+                                                            'ResourceARN' => 'arn:aws:lambda:us-west-2:123456789012:function:my-function',
+                                                            'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
+                                                            'RuleName' => 'test',
+                                                            'ServiceName' => 'myServiceName',
+                                                            'ServiceType' => 'AWS::Lambda::Function',
+                                                            'URLPath' => '/helloworld',
+                                                            'Version' => 1
+                                                          })
 
     attributes = {
       'http.host' => 'localhost',
@@ -61,9 +62,9 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
     }
 
     resource = OpenTelemetry::SDK::Resources::Resource.create({
-      'service.name' => 'myServiceName',
-      'cloud.platform' => 'aws_lambda'
-    })
+                                                                'service.name' => 'myServiceName',
+                                                                'cloud.platform' => 'aws_lambda'
+                                                              })
 
     rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(rule)
 
@@ -76,30 +77,30 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
 
   it 'test_applier_wild_card_attributes_matches_span_attributes' do
     rule = OpenTelemetry::Sampler::XRay::SamplingRule.new({
-      'Attributes' => {
-        'attr1' => '*',
-        'attr2' => '*',
-        'attr3' => 'HelloWorld',
-        'attr4' => 'Hello*',
-        'attr5' => '*World',
-        'attr6' => '?ello*',
-        'attr7' => 'Hell?W*d',
-        'attr8' => '*.World',
-        'attr9' => '*.World'
-      },
-      'FixedRate' => 0.11,
-      'HTTPMethod' => '*',
-      'Host' => '*',
-      'Priority' => 20,
-      'ReservoirSize' => 1,
-      'ResourceARN' => '*',
-      'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
-      'RuleName' => 'test',
-      'ServiceName' => '*',
-      'ServiceType' => '*',
-      'URLPath' => '*',
-      'Version' => 1
-    })
+                                                            'Attributes' => {
+                                                              'attr1' => '*',
+                                                              'attr2' => '*',
+                                                              'attr3' => 'HelloWorld',
+                                                              'attr4' => 'Hello*',
+                                                              'attr5' => '*World',
+                                                              'attr6' => '?ello*',
+                                                              'attr7' => 'Hell?W*d',
+                                                              'attr8' => '*.World',
+                                                              'attr9' => '*.World'
+                                                            },
+                                                            'FixedRate' => 0.11,
+                                                            'HTTPMethod' => '*',
+                                                            'Host' => '*',
+                                                            'Priority' => 20,
+                                                            'ReservoirSize' => 1,
+                                                            'ResourceARN' => '*',
+                                                            'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
+                                                            'RuleName' => 'test',
+                                                            'ServiceName' => '*',
+                                                            'ServiceType' => '*',
+                                                            'URLPath' => '*',
+                                                            'Version' => 1
+                                                          })
 
     rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(rule)
 
@@ -121,20 +122,20 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
   it 'test_applier_wild_card_attributes_matches_http_span_attributes' do
     rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(
       OpenTelemetry::Sampler::XRay::SamplingRule.new({
-        'Attributes' => {},
-        'FixedRate' => 0.11,
-        'HTTPMethod' => '*',
-        'Host' => '*',
-        'Priority' => 20,
-        'ReservoirSize' => 1,
-        'ResourceARN' => '*',
-        'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
-        'RuleName' => 'test',
-        'ServiceName' => '*',
-        'ServiceType' => '*',
-        'URLPath' => '*',
-        'Version' => 1
-      })
+                                                       'Attributes' => {},
+                                                       'FixedRate' => 0.11,
+                                                       'HTTPMethod' => '*',
+                                                       'Host' => '*',
+                                                       'Priority' => 20,
+                                                       'ReservoirSize' => 1,
+                                                       'ResourceARN' => '*',
+                                                       'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
+                                                       'RuleName' => 'test',
+                                                       'ServiceName' => '*',
+                                                       'ServiceType' => '*',
+                                                       'URLPath' => '*',
+                                                       'Version' => 1
+                                                     })
     )
 
     attributes = {
@@ -149,27 +150,27 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
   it 'test_applier_wild_card_attributes_matches_with_empty_attributes' do
     rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(
       OpenTelemetry::Sampler::XRay::SamplingRule.new({
-        'Attributes' => {},
-        'FixedRate' => 0.11,
-        'HTTPMethod' => '*',
-        'Host' => '*',
-        'Priority' => 20,
-        'ReservoirSize' => 1,
-        'ResourceARN' => '*',
-        'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
-        'RuleName' => 'test',
-        'ServiceName' => '*',
-        'ServiceType' => '*',
-        'URLPath' => '*',
-        'Version' => 1
-      })
+                                                       'Attributes' => {},
+                                                       'FixedRate' => 0.11,
+                                                       'HTTPMethod' => '*',
+                                                       'Host' => '*',
+                                                       'Priority' => 20,
+                                                       'ReservoirSize' => 1,
+                                                       'ResourceARN' => '*',
+                                                       'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
+                                                       'RuleName' => 'test',
+                                                       'ServiceName' => '*',
+                                                       'ServiceType' => '*',
+                                                       'URLPath' => '*',
+                                                       'Version' => 1
+                                                     })
     )
 
     attributes = {}
     resource = OpenTelemetry::SDK::Resources::Resource.create({
-      'service.name' => 'myServiceName',
-      'cloud.platform' => 'aws_ec2'
-    })
+                                                                'service.name' => 'myServiceName',
+                                                                'cloud.platform' => 'aws_ec2'
+                                                              })
 
     assert rule_applier.matches?(attributes, resource)
     assert rule_applier.matches?({}, resource)
@@ -182,20 +183,20 @@ describe OpenTelemetry::Sampler::XRay::SamplingRuleApplier do
   it 'test_applier_matches_with_http_url_with_http_target_undefined' do
     rule_applier = OpenTelemetry::Sampler::XRay::SamplingRuleApplier.new(
       OpenTelemetry::Sampler::XRay::SamplingRule.new({
-        'Attributes' => {},
-        'FixedRate' => 0.11,
-        'HTTPMethod' => '*',
-        'Host' => '*',
-        'Priority' => 20,
-        'ReservoirSize' => 1,
-        'ResourceARN' => '*',
-        'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
-        'RuleName' => 'test',
-        'ServiceName' => '*',
-        'ServiceType' => '*',
-        'URLPath' => '/somerandompath',
-        'Version' => 1
-      })
+                                                       'Attributes' => {},
+                                                       'FixedRate' => 0.11,
+                                                       'HTTPMethod' => '*',
+                                                       'Host' => '*',
+                                                       'Priority' => 20,
+                                                       'ReservoirSize' => 1,
+                                                       'ResourceARN' => '*',
+                                                       'RuleARN' => 'arn:aws:xray:us-east-1:999999999999:sampling-rule/test',
+                                                       'RuleName' => 'test',
+                                                       'ServiceName' => '*',
+                                                       'ServiceType' => '*',
+                                                       'URLPath' => '/somerandompath',
+                                                       'Version' => 1
+                                                     })
     )
 
     attributes = {

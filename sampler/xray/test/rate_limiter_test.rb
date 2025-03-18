@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright OpenTelemetry Authors
 #
 # SPDX-License-Identifier: Apache-2.0
@@ -44,4 +46,3 @@ describe OpenTelemetry::Sampler::XRay::RateLimiter do
     assert_equal 30, spent
   end
 end
-
