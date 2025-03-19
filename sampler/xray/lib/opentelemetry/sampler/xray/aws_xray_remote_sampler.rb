@@ -117,17 +117,7 @@ module OpenTelemetry
           @target_poller = Thread.new do
             loop do
               sleep(((@target_polling_interval * 1000) + @target_polling_jitter_millis) / 1000.0)
-
-              request_body = {
-                SamplingStatisticsDocuments: @rule_cache.create_sampling_statistics_documents(@client_id)
-              }
-              sampling_targets_response = @sampling_client.fetch_sampling_targets(request_body)
-              if sampling_targets_response&.body && sampling_targets_response.body != ''
-                response_body = JSON.parse(sampling_targets_response.body)
-                update_sampling_targets(response_body)
-              else
-                OpenTelemetry.logger.debug('SamplingTargets Response is falsy')
-              end
+              retrieve_and_update_sampling_targets
             end
           end
         end
@@ -139,6 +129,19 @@ module OpenTelemetry
             update_sampling_rules(rules)
           else
             OpenTelemetry.logger.error('GetSamplingRules Response is falsy')
+          end
+        end
+
+        def retrieve_and_update_sampling_targets
+          request_body = {
+            SamplingStatisticsDocuments: @rule_cache.create_sampling_statistics_documents(@client_id)
+          }
+          sampling_targets_response = @sampling_client.fetch_sampling_targets(request_body)
+          if sampling_targets_response&.body && sampling_targets_response.body != ''
+            response_body = JSON.parse(sampling_targets_response.body)
+            update_sampling_targets(response_body)
+          else
+            OpenTelemetry.logger.debug('SamplingTargets Response is falsy')
           end
         end
 

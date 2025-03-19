@@ -81,10 +81,24 @@ describe OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler do
       OpenTelemetry::SemanticConventions::Resource::SERVICE_NAME => 'test-service-name',
       OpenTelemetry::SemanticConventions::Resource::CLOUD_PLATFORM => 'test-cloud-platform'
     )
+    rs = OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler.new(resource: resource)
 
-    OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler.new(resource: resource)
+    attributes = { 'abc' => '1234' }
 
-    # TODO...
+    sleep(1.0)
+    test_rule_applier = rs.instance_variable_get(:@root).instance_variable_get(:@root).instance_variable_get(:@rule_cache).instance_variable_get(:@rule_appliers)[0]
+    assert_equal 'test', test_rule_applier.instance_variable_get(:@sampling_rule).instance_variable_get(:@rule_name)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
+
+    rs.instance_variable_get(:@root).instance_variable_get(:@root).send(:retrieve_and_update_sampling_targets)
+    sleep(1.0)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
   end
 
   it 'generates valid client id' do
@@ -106,141 +120,99 @@ describe OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler do
   def create_spans(sampled_array, thread_id, span_attributes, remote_sampler, number_of_spans)
     sampled = 0
     number_of_spans.times do
-      sampled += 1 if remote_sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision)
+      sampled += 1 if remote_sampler.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: span_attributes,
+                                                    links: []).instance_variable_get(:@decision) != OpenTelemetry::SDK::Trace::Samplers::Decision::DROP
     end
     sampled_array[thread_id] = sampled
   end
 
-  # it 'test_multithreading_with_large_reservoir' do
-  #   stub_request(:post, /.*/).to_return { |request| mock_requests_get(url: request.uri.to_s) }
+  it 'test_multithreading_with_large_reservoir' do
+    stub_request(:post, "http://#{TEST_URL}/GetSamplingRules")
+      .to_return(status: 200, body: File.read(DATA_DIR_SAMPLING_RULES))
+    stub_request(:post, "http://#{TEST_URL}/SamplingTargets")
+      .to_return(status: 200, body: File.read(DATA_DIR_SAMPLING_TARGETS))
 
-  #   rs = OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler.new(
-  #     resource: OpenTelemetry::SDK::Resources::Resource.create({
-  #                                                                'service.name' => 'test-service-name',
-  #                                                                'cloud.platform' => 'test-cloud-platform'
-  #                                                              })
-  #   )
+    rs = OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler.new(
+      resource: OpenTelemetry::SDK::Resources::Resource.create({
+                                                                 'service.name' => 'test-service-name',
+                                                                 'cloud.platform' => 'test-cloud-platform'
+                                                               })
+    )
 
-  #   attributes = { 'abc' => '1234' }
-  #   sleep(2.0)
-  #   assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
-  #                rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: {}, links: []).instance_variable_get(:@decision)
-  #   sleep(3.0)
+    attributes = { 'abc' => '1234' }
+    sleep(1.0)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::DROP,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
+    rs.instance_variable_get(:@root).instance_variable_get(:@root).send(:retrieve_and_update_sampling_targets)
+    sleep(1.0)
 
-  #   number_of_spans = 100
-  #   thread_count = 1000
-  #   sampled_array = Array.new(thread_count, 0)
-  #   threads = []
+    number_of_spans = 100
+    thread_count = 100
+    sampled_array = Array.new(thread_count, 0)
+    threads = []
 
-  #   thread_count.times do |idx|
-  #     threads << Thread.new do
-  #       create_spans(sampled_array, idx, attributes, rs, number_of_spans)
-  #     end
-  #   end
+    thread_count.times do |idx|
+      threads << Thread.new do
+        create_spans(sampled_array, idx, attributes, rs, number_of_spans)
+      end
+    end
 
-  #   threads.each(&:join)
-  #   sum_sampled = sampled_array.sum
+    threads.each(&:join)
+    sum_sampled = sampled_array.sum
 
-  #   test_rule_applier = rs.root.root.rule_cache.rule_appliers[0]
-  #   assert_equal 100_000, test_rule_applier.reservoir_sampler.reservoir.quota
-  #   assert_equal 100_000, sum_sampled
-  # end
+    test_rule_applier = rs.instance_variable_get(:@root).instance_variable_get(:@root).instance_variable_get(:@rule_cache).instance_variable_get(:@rule_appliers)[0]
+    assert_equal 100_000, test_rule_applier.instance_variable_get(:@reservoir_sampler).instance_variable_get(:@quota)
+    assert_equal 10_000, sum_sampled
+  end
+
+  it 'test_multithreading_with_some_reservoir' do
+    stub_request(:post, "http://#{TEST_URL}/GetSamplingRules")
+      .to_return(status: 200, body: File.read(DATA_DIR_SAMPLING_RULES))
+    stub_request(:post, "http://#{TEST_URL}/SamplingTargets")
+      .to_return(status: 200, body: File.read(DATA_DIR_SAMPLING_TARGETS))
+
+    rs = OpenTelemetry::Sampler::XRay::AWSXRayRemoteSampler.new(
+      resource: OpenTelemetry::SDK::Resources::Resource.create({
+                                                                 'service.name' => 'test-service-name',
+                                                                 'cloud.platform' => 'test-cloud-platform'
+                                                               })
+    )
+
+    attributes = { 'abc' => 'non-matching attribute value, use default rule' }
+    sleep(1.0)
+    assert_equal OpenTelemetry::SDK::Trace::Samplers::Decision::RECORD_AND_SAMPLE,
+                 rs.should_sample?(parent_context: nil, trace_id: '3759e988bd862e3fe1be46a994272793', name: 'name', kind: OpenTelemetry::Trace::SpanKind::SERVER, attributes: attributes, links: []).instance_variable_get(:@decision)
+
+    rs.instance_variable_get(:@root).instance_variable_get(:@root).send(:retrieve_and_update_sampling_targets)
+
+    sleep(1.0)
+    # Without freezing time, finishing all thread jobs will take more than a second,
+    # which will eat up more than 1 second of reservoir. Here we will freeze time
+    # and pretend all thread jobs start and end at the exact same time,
+    # assume and test exactly 1 second of reservoir (100 quota) only.
+    # Freeze time at the current moment.
+    current_time = Time.now
+    Timecop.freeze(current_time)
+
+    number_of_spans = 100
+    thread_count = 100
+    sampled_array = Array.new(thread_count, 0)
+    threads = []
+
+    thread_count.times do |idx|
+      threads << Thread.new do
+        create_spans(sampled_array, idx, attributes, rs, number_of_spans)
+      end
+    end
+
+    threads.each(&:join)
+    sum_sampled = sampled_array.sum
+
+    test_rule_applier = rs.instance_variable_get(:@root).instance_variable_get(:@root).instance_variable_get(:@rule_cache).instance_variable_get(:@rule_appliers)[1]
+    assert_equal 100, test_rule_applier.instance_variable_get(:@reservoir_sampler).instance_variable_get(:@quota)
+    assert_equal 100, sum_sampled
+
+    # Return to normal time.
+    Timecop.return
+  end
 end
-
-#
-#
-#
-#   it('testLargeReservoir', done => {
-#     nock(TEST_URL).post('/GetSamplingRules').reply(200, require(DATA_DIR_SAMPLING_RULES));
-#     nock(TEST_URL).post('/SamplingTargets').reply(200, require(DATA_DIR_SAMPLING_TARGETS));
-#     const resource = new Resource({
-#       [SEMRESATTRS_SERVICE_NAME]: 'test-service-name',
-#       [SEMRESATTRS_CLOUD_PLATFORM]: 'test-cloud-platform',
-#     });
-#     const attributes = { abc: '1234' };
-#
-#     // Patch default target polling interval
-#     const tmp = (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval;
-#     (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval = () => {
-#       return 0.2; // seconds
-#     };
-#     const sampler = new AwsXRayRemoteSampler({
-#       resource: resource,
-#     });
-#
-#     setTimeout(() => {
-#       expect(((sampler as any)._root._root.ruleCache as any).ruleAppliers[0].samplingRule.RuleName).toEqual('test');
-#       expect(sampler.shouldSample(context.active(), '1234', 'name', SpanKind.CLIENT, attributes, []).decision).toEqual(
-#         SamplingDecision.NOT_RECORD
-#       );
-#
-#       setTimeout(() => {
-#         let sampled = 0;
-#         for (let i = 0; i < 100000; i++) {
-#           if (
-#             sampler.shouldSample(context.active(), '1234', 'name', SpanKind.CLIENT, attributes, []).decision !==
-#             SamplingDecision.NOT_RECORD
-#           ) {
-#             sampled++;
-#           }
-#         }
-#
-#         // restore function
-#         (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval = tmp;
-#
-#         expect((sampler as any)._root._root.ruleCache.ruleAppliers[0].reservoirSampler.quota).toEqual(100000);
-#         expect(sampled).toEqual(100000);
-#         done();
-#       }, 2000);
-#     }, 100);
-#   });
-#
-#   it('testSomeReservoir', done => {
-#     nock(TEST_URL).post('/GetSamplingRules').reply(200, require(DATA_DIR_SAMPLING_RULES));
-#     nock(TEST_URL).post('/SamplingTargets').reply(200, require(DATA_DIR_SAMPLING_TARGETS));
-#     const resource = new Resource({
-#       [SEMRESATTRS_SERVICE_NAME]: 'test-service-name',
-#       [SEMRESATTRS_CLOUD_PLATFORM]: 'test-cloud-platform',
-#     });
-#     const attributes = { abc: 'non-matching attribute value, use default rule' };
-#
-#     // Patch default target polling interval
-#     const tmp = (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval;
-#     (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval = () => {
-#       return 2; // seconds
-#     };
-#     const sampler = new AwsXRayRemoteSampler({
-#       resource: resource,
-#     });
-#
-#     setTimeout(() => {
-#       expect(((sampler as any)._root._root.ruleCache as any).ruleAppliers[0].samplingRule.RuleName).toEqual('test');
-#       expect(sampler.shouldSample(context.active(), '1234', 'name', SpanKind.CLIENT, attributes, []).decision).toEqual(
-#         SamplingDecision.NOT_RECORD
-#       );
-#
-#       setTimeout(() => {
-#         const clock = sinon.useFakeTimers(Date.now());
-#         clock.tick(2000);
-#         let sampled = 0;
-#         for (let i = 0; i < 100000; i++) {
-#           if (
-#             sampler.shouldSample(context.active(), '1234', 'name', SpanKind.CLIENT, attributes, []).decision !==
-#             SamplingDecision.NOT_RECORD
-#           ) {
-#             sampled++;
-#           }
-#         }
-#         clock.restore();
-#         // restore function
-#         (_AwsXRayRemoteSampler.prototype as any).getDefaultTargetPollingInterval = tmp;
-#         expect(sampled).toEqual(100);
-#         done();
-#       }, 2000);
-#     }, 300);
-#   });
-#
-#
-#
-#
-#
