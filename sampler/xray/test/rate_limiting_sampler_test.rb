@@ -147,7 +147,8 @@ describe OpenTelemetry::Sampler::XRay::RateLimitingSampler do
     end
     assert_equal 1, sampled
 
-    Timecop.freeze(@current_time + 1000) # Move forward 1000 seconds
+    @current_time += 1000
+    Timecop.freeze(@current_time) # Move forward 1000 seconds
 
     sampled = 0
     50.times do
