@@ -60,7 +60,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
       cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create({}))
       cache.update_rules([default_rule])
 
-      Timecop.travel(2 * 60 * 60) # Travel 2 hours into the future
+      Timecop.freeze(2 * 60 * 60) # Travel 2 hours into the future
       assert cache.expired?
     end
   end
@@ -163,7 +163,7 @@ describe OpenTelemetry::Sampler::XRay::RuleCache do
       cache = OpenTelemetry::Sampler::XRay::RuleCache.new(OpenTelemetry::SDK::Resources::Resource.create)
       cache.update_rules([rule1, rule2])
 
-      Timecop.travel(0.001) # Travel 1ms into the future
+      Timecop.freeze(0.001) # Travel 1ms into the future
 
       client_id = '12345678901234567890abcd'
       statistics = cache.create_sampling_statistics_documents(client_id)

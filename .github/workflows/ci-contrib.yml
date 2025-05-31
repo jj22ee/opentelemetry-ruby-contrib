@@ -207,231 +207,231 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: "Test Ruby 3.4"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
-      - name: "Test Ruby 3.4 again"
-        uses: ./.github/actions/test_gem
-        with:
-          gem: "opentelemetry-sampler-${{ matrix.gem }}"
-          ruby: "3.4"
+      # - name: "Test Ruby 3.4"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
+      # - name: "Test Ruby 3.4 again"
+      #   uses: ./.github/actions/test_gem
+      #   with:
+      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
+      #     ruby: "3.4"
       # - name: "Test Ruby 3.3"
       #   uses: ./.github/actions/test_gem
       #   with:
@@ -451,169 +451,169 @@ jobs:
       #     rubocop: true
       #     coverage: true
       #     build: true
-      # - name: "Test JRuby"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
-      # - name: "Test JRuby again"
-      #   if: "${{ matrix.os == 'ubuntu-latest' }}"
-      #   uses: ./.github/actions/test_gem
-      #   with:
-      #     gem: "opentelemetry-sampler-${{ matrix.gem }}"
-      #     ruby: "jruby-9.4.12.0"
+      - name: "Test JRuby again"
+        if: "${{ matrix.os == 'ubuntu-latest' }}"
+        uses: ./.github/actions/test_gem
+        with:
+          gem: "opentelemetry-sampler-${{ matrix.gem }}"
+          ruby: "jruby-9.4.12.0"
 
